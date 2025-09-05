@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import Header from './Header'
 const About = () => {
   return (
-    <Box sx={{ py: 10, textAlign: "center", backgroundColor: "#f9fafb" }}>
+    <Box sx={{ py: 10, textAlign: "center", backgroundColor: "#dde6efff" }}>
          <Header/>
       <Typography variant="h3" sx={{ mb: 3, fontWeight: "bold" }}>
         About Vyoobam Tech

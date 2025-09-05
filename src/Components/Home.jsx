@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  AppBar,
-  Toolbar,
   Typography,
   Button,
   Container,
@@ -18,39 +16,46 @@ import MailIcon from "@mui/icons-material/Mail";
 import PeopleIcon from "@mui/icons-material/People";
 import BookIcon from "@mui/icons-material/Book";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import logoImg from "../assets/logo.jpg";
+//import logoImg from "../assets/logo.jpg";
 //import laptop from "../assets/laptop.jpg"
-import gorcery from "../assets/grocery2.jpg"
+import gorcery from "../assets/grocery2.jpg";
 import { useNavigate } from "react-router-dom";
 import Header from "../Components/Header";
-import Footer from "../Components/Footer"
+import Footer from "../Components/Footer";
 import VideoPlayer from "../Components/Videoplayer";
+import { motion } from "framer-motion";
+//import { useEffect, useState } from "react";
+//import Loginmodal from "../Components/Loginmodal";
 const Home = () => {
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
+  
+
+ 
 
   return (
     <Box>
-     <Header/>
+      
+
+      <Header />
 
       {/* Main Section */}
       <Container sx={{ py: 30 }}>
         <Grid container spacing={4} justifyContent="space-between">
           {/* Left Section */}
           <Grid size={{ xs: 12, md: 7 }}>
-            <Typography variant="h4" gutterBottom >
-       
+            <Typography variant="h4" gutterBottom>
               Welcome to Vyoobam Tech
             </Typography>
             <Typography variant="h6" color="text.secondary" paragraph>
-             As a leading software solution provider, Vyoobam Tech is
-            thrilled to announce the launch of e-Grocery Mart, our
-             latest innovative software product. e-Grocery Mart brings you a 
-             cutting-edge online shopping experience for all your daily needs. 
-            Join us and discover the future of convenient and efficient shopping!.
+              As a leading software solution provider, Vyoobam Tech is thrilled
+              to announce the launch of e-Grocery Mart, our latest innovative
+              software product. e-Grocery Mart brings you a cutting-edge online
+              shopping experience for all your daily needs. Join us and discover
+              the future of convenient and efficient shopping!.
             </Typography>
             <Button variant="contained" size="large" sx={{ mt: 3 }}>
-             Explore Now
+              Explore Now
             </Button>
           </Grid>
 
@@ -64,7 +69,9 @@ const navigate = useNavigate();
                 <ListItem disablePadding>
                   <ListItemButton>
                     <ListItemIcon>
-                      <DashboardIcon sx={{ color: "#6d81c2ff", fontSize: 32 }}/>
+                      <DashboardIcon
+                        sx={{ color: "#6d81c2ff", fontSize: 32 }}
+                      />
                     </ListItemIcon>
                     <ListItemText
                       primary="CRM"
@@ -75,7 +82,7 @@ const navigate = useNavigate();
                 <ListItem disablePadding>
                   <ListItemButton>
                     <ListItemIcon>
-                      <MailIcon color="error"/>
+                      <MailIcon color="error" />
                     </ListItemIcon>
                     <ListItemText
                       primary="Mail"
@@ -97,7 +104,7 @@ const navigate = useNavigate();
                 <ListItem disablePadding>
                   <ListItemButton>
                     <ListItemIcon>
-                     <PeopleIcon color="secondary" />
+                      <PeopleIcon color="secondary" />
                     </ListItemIcon>
                     <ListItemText
                       primary="People"
@@ -112,98 +119,107 @@ const navigate = useNavigate();
       </Container>
 
       {/* E-Grocery Mart Banner */}
-
-
-<Box
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-     backgroundColor: "#7eaaa8ff", // dark background
-    color: "white",
-    borderRadius: "16px",
-    overflow: "hidden",
-    mt: 0,
-    mx: 4,
-    height: "400px", // fixed height for section
-  }}
->
-  {/* Left Text Section */}
-  <Box sx={{ flex: 1, p: 4 }}>
-    <Typography
-      variant="h3"
-      sx={{ fontWeight: "bold", mb: 3, color: "#fcd34d" }}
-    >
-      Future of Shopping: <br /> E-Grocerymart
-    </Typography>
-    <Typography variant="body1" sx={{ color: "#8e2710ff", lineHeight: 1.8 }}>
-      As a leading software solution provider, Vyoobam Tech is thrilled to
-      announce the launch of e-Grocery Mart, our latest innovative software
-      product. e-Grocery Mart brings you a cutting-edge online shopping
-      experience for all your daily needs. Join us and discover the future
-      of convenient and efficient shopping!
-    </Typography>
-  </Box>
-
-  {/* Right Image with Play Button */}
-  <Box
-    sx={{
-      flex: 1,
-      position: "relative",
-      height: "100%", 
-    }}
-  >
-    <img
-      src={gorcery} 
-      alt="banner"
-      style={{
-        width: "100%", 
-        height: "100%", 
-        objectFit: "cover", 
-      }}
-    />
-      <VideoPlayer/>
-  </Box>
-</Box>
-
-<Box
-  sx={{
-    width: "100%",          
-       
-    backgroundColor: "#dee7f0ff",
-    py: 6,
-    textAlign: "center",
-    mt: 4,
-    borderRadius: 0,        
-    px: 0                   
-  }}
->
-      <Typography variant="h4" sx={{ fontWeight: "bold", color: "#111827", mb: 2 }}>
-        About Vyoobam Tech
-      </Typography>
-      <Typography variant="body1" sx={{ color: "#374151", maxWidth: "600px", mx: "auto" }}>
-        We are a software solutions company building innovative and secure
-        digital products. Our mission is to help businesses grow with modern
-        technology solutions…
-      </Typography>
-
-      {/* Read More Button */}
-      <Button
-        variant="text"
-        sx={{ mt: 2, color: "#2563eb", fontWeight: "bold" }}
-        onClick={() => navigate("/about")}
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.3 }}
       >
-        Read More →
-      </Button>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            backgroundColor: "#7eaaa8ff", // dark background
+            color: "white",
+            borderRadius: "16px",
+            overflow: "hidden",
+            mt: 0,
+            mx: 4,
+            height: "400px", // fixed height for section
+          }}
+        >
+          {/* Left Text Section */}
+          <Box sx={{ flex: 1, p: 4 }}>
+            <Typography
+              variant="h3"
+              sx={{ fontWeight: "bold", mb: 3, color: "#fcd34d" }}
+            >
+              Future of Shopping: <br /> E-Grocerymart
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{ color: "#8e2710ff", lineHeight: 1.8 }}
+            >
+              As a leading software solution provider, Vyoobam Tech is thrilled
+              to announce the launch of e-Grocery Mart, our latest innovative
+              software product. e-Grocery Mart brings you a cutting-edge online
+              shopping experience for all your daily needs. Join us and discover
+              the future of convenient and efficient shopping!
+            </Typography>
+          </Box>
+
+          {/* Right Image with Play Button */}
+          <Box
+            sx={{
+              flex: 1,
+              position: "relative",
+              height: "100%",
+            }}
+          >
+            <img
+              src={gorcery}
+              alt="banner"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
+            <VideoPlayer />
+          </Box>
+        </Box>
+      </motion.div>
+      {/*Small About Section */}
+      <Box
+        sx={{
+          width: "100%",
+
+          backgroundColor: "#dee7f0ff",
+          py: 6,
+          textAlign: "center",
+          mt: 4,
+          borderRadius: 0,
+          px: 0,
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{ fontWeight: "bold", color: "#111827", mb: 2 }}
+        >
+          About Vyoobam Tech
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{ color: "#374151", maxWidth: "600px", mx: "auto" }}
+        >
+          We are a software solutions company building innovative and secure
+          digital products. Our mission is to help businesses grow with modern
+          technology solutions…
+        </Typography>
+
+        {/* Read More Button */}
+        <Button
+          variant="text"
+          sx={{ mt: 2, color: "#2563eb", fontWeight: "bold" }}
+          onClick={() => navigate("/about")}
+        >
+          Read More →
+        </Button>
+      </Box>
+      <Footer />
     </Box>
-  <Footer/>
-  
-  </Box>
-
-
-    
   );
 };
 
 export default Home;
-
