@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import React, { useState } from "react";
 import {
   AppBar,
@@ -22,45 +21,120 @@ import logoImg from "../assets/logo.jpg";
 const Header = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [megaOpen, setMegaOpen] = useState(false);
+  const [activeMega, setActiveMega] = useState(null);
   const [langOpen, setLangOpen] = useState(false);
 
   const menuItems = [
     { text: "Home", path: "/" },
-    { text: "About", path: "/about" },
-    { text: "Services", mega: true }, // mega menu
-    { text: "Awards", path: "/awards" },
+    { text: "About", mega: "about" },
+    { text: "Services", mega: "services" },
+    { text: "Products", mega: "products" },
+    { text: "Careers", path: "/careers" },
+     { text: "Internship", path: "/internship" },
     { text: "Contact", path: "/contact" },
+    
   ];
 
-  const servicesMegaMenu = [
-    {
-      category: "Development",
-      items: [
-        { text: "Web Development", path: "/service/web" },
-        { text: "Mobile Apps", path: "/service/mobile" },
-        { text: "API Integration", path: "/service/api" },
-      ],
-    },
-    {
-      category: "Design",
-      items: [
-        { text: "UI/UX Design", path: "/service/uiux" },
-        { text: "Graphic Design", path: "/service/graphic" },
-        { text: "Brand Identity", path: "/service/brand" },
-      ],
-    },
-    {
-      category: "Cloud & Hosting",
-      items: [
-        { text: "Cloud Setup", path: "/service/cloud" },
-        { text: "DevOps", path: "/service/devops" },
-        { text: "Hosting", path: "/service/hosting" },
-      ],
-    },
-  ];
+  const megaMenus = {
+    services: [
+      {
+        category: "Development",
+        items: [
+          { text: "Web Development", path: "/service/web" },
+          { text: "Mobile Apps", path: "/service/mobile" },
+          { text: "API Integration", path: "/service/api" },
+        ],
+      },
+      {
+        category: "Design",
+        items: [
+          { text: "UI/UX Design", path: "/service/uiux" },
+          { text: "Graphic Design", path: "/service/graphic" },
+          { text: "Brand Identity", path: "/service/brand" },
+        ],
+      },
+      {
+        category: "Cloud & Hosting",
+        items: [
+          { text: "Cloud Setup", path: "/service/cloud" },
+          { text: "DevOps", path: "/service/devops" },
+          { text: "Hosting", path: "/service/hosting" },
+        ],
+      },
+    ],
+    about: [
+      {
+        category: "Company Overview",
+        items: [
+          { text: "Vision & Mission", path: "/about/vision" },
+          { text: "Our Story", path: "/about/story" },
+          { text: "Leadership", path: "/about/leadership" },
+          { text: "Milestones", path: "/about#timeline-section" },
+          { text: "Core Values", path: "/about/values" },
+          { text: "Awards", path: "/about/Awards" },
+        ],
+      },
+    ],
+    products: [
+      {
+        category: "Overview",
+        items: [
+          { text: "Products", path: "/products" },
+          { text: "Market Metrics", path: "/products/metrics" },
+          { text: "Features", path: "/products/features" },
+          { text: "Intuitive UI", path: "/products/ui" },
+        ],
+      },
+      {
+        category: "Management",
+        items: [
+          { text: "Order Management", path: "/products/order" },
+          { text: "User Management", path: "/products/user" },
+          { text: "Inventory Tracking", path: "/products/inventory" },
+        ],
+      },
+      {
+        category: "Insights",
+        items: [
+          { text: "Analytics & Reports", path: "/products/analytics" },
+          { text: "Customer Management", path: "/products/customers" },
+          { text: "Use Cases", path: "/products/usecases" },
+          { text: "Pricing Plans", path: "/products/pricing" },
+          { text: "Case Studies", path: "/products/casestudies" },
+          { text: "Documentation", path: "/products/docs" },
+        ],
+      },
+    ],
+  };
 
   const languages = ["English", "தமிழ்", "हिंदी"];
+
+  // Shared style for all menu buttons for underline on hover
+  const menuButtonStyles = {
+    mx: 1,
+    position: "relative",
+    color: "#2B3674",
+    fontWeight: 500,
+    textTransform: "none",
+    backgroundColor: "transparent",
+    "&::after": {
+      content: "''",
+      position: "absolute",
+      width: "0%",
+      height: "2px",
+      bottom: 0,
+      left: 0,
+      backgroundColor: "#1976d2",
+      transition: "width 0.3s ease",
+    },
+    "&:hover::after": {
+      width: "100%",
+    },
+    "&:hover": {
+      backgroundColor: "transparent",
+      color: "#2B3674",
+    },
+  };
 
   return (
     <>
@@ -70,11 +144,14 @@ const Header = () => {
         sx={{
           zIndex: 1201,
           boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-          background: "#fff",
+          background: "#fff"
         }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          {/* Logo */}
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between",
+         alignItems: "center",  
+         minHeight: { xs: 70, md: 100 }, 
+         px: { xs: 2, md: 4 },}}>
+        
           <Typography
             variant="h6"
             sx={{
@@ -98,29 +175,37 @@ const Header = () => {
           </Typography>
 
           {/* Desktop Menu */}
-          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
+          <Box
+            sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}
+          >
             {menuItems.map((item) =>
               item.mega ? (
                 <Box
                   key={item.text}
-                  onMouseEnter={() => setMegaOpen(true)}
-                  onMouseLeave={() => setMegaOpen(false)}
+                  onMouseEnter={() => setActiveMega(item.mega)}
+                  onMouseLeave={() => setActiveMega(null)}
                   sx={{ position: "relative" }}
                 >
-                  <Button sx={{ mx: 1 }}>{item.text}</Button>
+                  <Button sx={menuButtonStyles}>{item.text}</Button>
 
-                  {megaOpen && (
+                  {activeMega === item.mega && (
                     <Paper
                       elevation={4}
                       sx={{
                         position: "absolute",
                         top: "100%",
-                        left: 0,
-                        width: "800px",
-                        p: 3,
+                        left: item.mega === "about" ? "-50px" : "-100px",
+                        minWidth: "900px",
+                        p: 4,
+                        backgroundColor: "#fff",
                         display: "grid",
-                        gridTemplateColumns: "repeat(3, 1fr)",
-                        gap: 2,
+                        gridTemplateColumns: `repeat(${
+                          megaMenus[item.mega].length
+                        }, 1fr)`,
+                        columnGap: 6,
+                        rowGap: 2,
+                        borderRadius: 2,
+                        boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.1)",
                         animation: "fadeIn 0.3s ease-in-out",
                         "@keyframes fadeIn": {
                           from: { opacity: 0, transform: "translateY(10px)" },
@@ -128,7 +213,7 @@ const Header = () => {
                         },
                       }}
                     >
-                      {servicesMegaMenu.map((col) => (
+                      {megaMenus[item.mega].map((col) => (
                         <Box key={col.category}>
                           <Typography
                             variant="subtitle1"
@@ -136,27 +221,65 @@ const Header = () => {
                           >
                             {col.category}
                           </Typography>
-                          {col.items.map((sub) => (
-                            <Typography
-                              key={sub.text}
-                              sx={{
-                                cursor: "pointer",
-                                color: "#444",
-                                "&:hover": { color: "#1976d2" },
-                                mb: 0.5,
-                              }}
-                              onClick={() => navigate(sub.path)}
-                            >
-                              {sub.text}
-                            </Typography>
-                          ))}
+                         {col.items.map((sub) => (
+  <Box
+    key={sub.text}
+    onClick={() => {
+      navigate(sub.path);
+      setActiveMega(null);
+    }}
+    sx={{
+      position: "relative",
+      cursor: "pointer",
+      color: "#2B3674",
+      px: 2,
+      py: 0.8,
+      pl: 4, // make space for dots
+      borderRadius: "6px",
+      transition: "all 0.3s ease",
+      "&::before, &::after": {
+        content: '""',
+        position: "absolute",
+        top: "50%",
+        transform: "translateY(-50%)",
+        width: "6px",
+        height: "6px",
+        borderRadius: "50%",
+        opacity: 0,
+        transition: "opacity 0.3s ease, left 0.3s ease",
+      },
+      "&::before": {
+        left: "10px",
+        backgroundColor: "#00b2ff", // dot 1 color
+      },
+      "&::after": {
+        left: "18px",
+        backgroundColor: "#ff267e", // dot 2 color
+      },
+      "&:hover::before, &:hover::after": {
+        opacity: 1,
+      },
+      "&:hover": {
+        backgroundColor: "#f9f9f9",
+        color: "#00b2ff",
+      },
+    }}
+  >
+    {sub.text}
+  </Box>
+))}
+
                         </Box>
                       ))}
                     </Paper>
                   )}
                 </Box>
               ) : (
-                <Button key={item.text} onClick={() => navigate(item.path)} sx={{ mx: 1 }}>
+                <Button
+                  key={item.text}
+                  onClick={() => navigate(item.path)}
+                  sx={menuButtonStyles}
+                >
                   {item.text}
                 </Button>
               )

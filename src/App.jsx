@@ -4,22 +4,29 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./Components/About";
 import Service from "./Components/Service";
 import Contact from "./Components/Contact";
-import Awards from "./Components/Awards";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import Careers from "./Components/Careers";
+import Internship from "./Components/Internship";
+import "./Styles/App.css"
+
 function App() {
   return (
-    <>
-      <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
+    <><div className="animated-bg">
+  <div className="shape shape1"></div>
+  <div className="shape shape2"></div>
+  <div className="shape shape3"></div>
+  <div className="shape shape4"></div>
+      
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/service" element={<Service />} />
-            <Route path="/Awards" element={<Awards />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/intership" element={<Internship />} />
             <Route path="/Contact" element={<Contact />} />
           </Routes>
         </Router>
-      </GoogleOAuthProvider>
+ </div>
     </>
   );
 }
