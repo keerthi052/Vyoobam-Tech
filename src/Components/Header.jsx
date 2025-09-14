@@ -15,50 +15,46 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import LanguageIcon from "@mui/icons-material/Language";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useNavigate } from "react-router-dom";
 import logoImg from "../assets/logo.jpg";
+import marketproduct from "../assets/marketproduct.png";
+import eventproduct from "../assets/eventproduct.png";
+import salesproduct from "../assets/salesproduct.png";
+import eproduct from "../assets/eproduct.png";
 
 const Header = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [activeMega, setActiveMega] = useState(null);
   const [langOpen, setLangOpen] = useState(false);
+  const [activeProductFeature, setActiveProductFeature] = useState(null);
 
   const menuItems = [
     { text: "Home", path: "/" },
     { text: "About", mega: "about" },
-    { text: "Services", mega: "services" },
     { text: "Products", mega: "products" },
-    { text: "Careers", path: "/careers" },
-     { text: "Internship", path: "/internship" },
-    { text: "Contact", path: "/contact" },
+    { text: "Services", mega: "services" },
     
+    { text: "Careers", path: "/careers" },
+    { text: "Internship", path: "/internship" },
+    { text: "Contact", path: "/contact" },
   ];
 
   const megaMenus = {
     services: [
       {
-        category: "Development",
+        category: "Our Services",
         items: [
-          { text: "Web Development", path: "/service/web" },
-          { text: "Mobile Apps", path: "/service/mobile" },
-          { text: "API Integration", path: "/service/api" },
-        ],
-      },
-      {
-        category: "Design",
-        items: [
-          { text: "UI/UX Design", path: "/service/uiux" },
-          { text: "Graphic Design", path: "/service/graphic" },
-          { text: "Brand Identity", path: "/service/brand" },
-        ],
-      },
-      {
-        category: "Cloud & Hosting",
-        items: [
-          { text: "Cloud Setup", path: "/service/cloud" },
-          { text: "DevOps", path: "/service/devops" },
-          { text: "Hosting", path: "/service/hosting" },
+          { text: "Web Development", path: "/service" },
+          { text: "Data Analytics", path: "/service/data" },
+          { text: "Mobile App Development", path: "/service/mobile" },
+          { text: "Consulting Service", path: "/service/consulting" },
         ],
       },
     ],
@@ -71,49 +67,74 @@ const Header = () => {
           { text: "Leadership", path: "/about/leadership" },
           { text: "Milestones", path: "/about#timeline-section" },
           { text: "Core Values", path: "/about/values" },
-          { text: "Awards", path: "/about/Awards" },
+          { text: "Awards", path: "/about/awards" },
         ],
       },
     ],
     products: [
       {
-        category: "Overview",
-        items: [
-          { text: "Products", path: "/products" },
-          { text: "Market Metrics", path: "/products/metrics" },
-          { text: "Features", path: "/products/features" },
-          { text: "Intuitive UI", path: "/products/ui" },
-        ],
+        category: "Market Metrics",
+        description: "Billing, inventory, and analytics platform",
+       icon: (
+        <img
+          src={marketproduct}
+          alt="Market Metrics"
+          style={{ width: 50, height: 50, objectFit: "contain" }}
+        />
+      ),
+      items: [{ text: "Explore Market Metrics", path: "/products/metrics" }],
       },
       {
-        category: "Management",
-        items: [
-          { text: "Order Management", path: "/products/order" },
-          { text: "User Management", path: "/products/user" },
-          { text: "Inventory Tracking", path: "/products/inventory" },
-        ],
+        category: "Event Ease",
+        description: "Event management platform",
+       icon: (
+        <img
+          src={eventproduct}
+          alt="Market Metrics"
+          style={{ width: 50, height: 50, objectFit: "contain" }}
+        />
+      ),
+      items: [{ text: "Explore Market Metrics", path: "/products/metrics" }],
       },
       {
-        category: "Insights",
-        items: [
-          { text: "Analytics & Reports", path: "/products/analytics" },
-          { text: "Customer Management", path: "/products/customers" },
-          { text: "Use Cases", path: "/products/usecases" },
-          { text: "Pricing Plans", path: "/products/pricing" },
-          { text: "Case Studies", path: "/products/casestudies" },
-          { text: "Documentation", path: "/products/docs" },
-        ],
+        category: "Sales Sage",
+        description: "CRM-powered sales management tool",
+        icon: (
+        <img
+          src={salesproduct}
+          alt="Market Metrics"
+          style={{ width: 50, height: 50, objectFit: "contain" }}
+        />
+      ),
+      items: [{ text: "Explore Market Metrics", path: "/products/metrics" }],
+      },
+      {
+        category: "Vyoobam Nudge",
+        description: "Smart reminder & notification platform",
+        icon: <NotificationsActiveIcon sx={{ color: "#1976d2" }} />,
+        items: [{ text: "Explore Vyoobam Nudge", path: "/products/nudge" }],
+      },
+      {
+        category: "E-GroceryMart",
+        description: "Seamless digital grocery store",
+        icon: (
+        <img
+          src={eproduct}
+          alt="Market Metrics"
+          style={{ width: 50, height: 50, objectFit: "contain" }}
+        />
+      ),
+      items: [{ text: "Explore Market Metrics", path: "/products/metrics" }],
       },
     ],
   };
 
   const languages = ["English", "தமிழ்", "हिंदी"];
 
-  // Shared style for all menu buttons for underline on hover
   const menuButtonStyles = {
     mx: 1,
     position: "relative",
-    color: "#2B3674",
+    color: "#010830ff",
     fontWeight: 500,
     textTransform: "none",
     backgroundColor: "transparent",
@@ -124,16 +145,11 @@ const Header = () => {
       height: "2px",
       bottom: 0,
       left: 0,
-      backgroundColor: "#1976d2",
+      backgroundColor: "#020748ff",
       transition: "width 0.3s ease",
     },
-    "&:hover::after": {
-      width: "100%",
-    },
-    "&:hover": {
-      backgroundColor: "transparent",
-      color: "#2B3674",
-    },
+    "&:hover::after": { width: "100%" },
+    "&:hover": { backgroundColor: "transparent", color: "#040f4dff" },
   };
 
   return (
@@ -144,14 +160,19 @@ const Header = () => {
         sx={{
           zIndex: 1201,
           boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-          background: "#fff"
+          background: "#ffffffff",
         }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between",
-         alignItems: "center",  
-         minHeight: { xs: 70, md: 100 }, 
-         px: { xs: 2, md: 4 },}}>
-        
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            minHeight: { xs: 70, md: 100 },
+            px: { xs: 2, md: 4 },
+          }}
+        >
+          {/* Logo */}
           <Typography
             variant="h6"
             sx={{
@@ -161,7 +182,7 @@ const Header = () => {
               fontFamily: "'Russo One', sans-serif",
               fontSize: { xs: "18px", md: "26px" },
               fontWeight: "bold",
-              color: "#2B3674",
+              color: "#000a43ff",
               cursor: "pointer",
             }}
             onClick={() => navigate("/")}
@@ -175,102 +196,158 @@ const Header = () => {
           </Typography>
 
           {/* Desktop Menu */}
-          <Box
-            sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}
-          >
+          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
             {menuItems.map((item) =>
               item.mega ? (
-                <Box
-                  key={item.text}
-                  onMouseEnter={() => setActiveMega(item.mega)}
-                  onMouseLeave={() => setActiveMega(null)}
-                  sx={{ position: "relative" }}
-                >
-                  <Button sx={menuButtonStyles}>{item.text}</Button>
+                <Box key={item.text} sx={{ position: "relative" }}>
+                  <Button
+                    sx={menuButtonStyles}
+                    onClick={() =>
+                      setActiveMega(activeMega === item.mega ? null : item.mega)
+                    }
+                    endIcon={
+                      <KeyboardArrowDownIcon
+                        sx={{
+                          transform:
+                            activeMega === item.mega ? "rotate(180deg)" : "rotate(0deg)",
+                          transition: "0.3s",
+                        }}
+                      />
+                    }
+                  >
+                    {item.text}
+                  </Button>
 
-                  {activeMega === item.mega && (
+                  {/* About + Services Simple Grid */}
+                  {activeMega === item.mega &&
+                    (item.mega === "services" || item.mega === "about") && (
+                      <Paper
+                        elevation={4}
+                        sx={{
+                          position: "absolute",
+                          top: "100%",
+                          left: "-50px",
+                          minWidth: "400px",
+                          p: 3,
+                          backgroundColor: "#eaf2fac0",
+                          borderRadius: 2,
+                          boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.1)",
+                        }}
+                      >
+                        {megaMenus[item.mega][0].items.map((sub) => (
+                          <Box
+                            key={sub.text}
+                            onClick={() => {
+                              navigate(sub.path);
+                              setActiveMega(null);
+                            }}
+                            sx={{
+                              cursor: "pointer",
+                              color: "#000000ff",
+                              p: 1,
+                              borderRadius: "6px",
+                              transition: "all 0.3s ease",
+                              "&:hover": {
+                                backgroundColor: "#04145eff",
+                                color: "#f0f3f4ff",
+                              },
+                            }}
+                          >
+                            {sub.text}
+                          </Box>
+                        ))}
+                      </Paper>
+                    )}
+
+                  {/* Products Advanced Panel */}
+                  {activeMega === "products" && item.mega === "products" && (
                     <Paper
                       elevation={4}
                       sx={{
                         position: "absolute",
                         top: "100%",
-                        left: item.mega === "about" ? "-50px" : "-100px",
-                        minWidth: "900px",
-                        p: 4,
-                        backgroundColor: "#fff",
-                        display: "grid",
-                        gridTemplateColumns: `repeat(${
-                          megaMenus[item.mega].length
-                        }, 1fr)`,
-                        columnGap: 6,
-                        rowGap: 2,
+                        left: "-150px",
+                        minWidth: "950px",
+                        p: 3,
+                        backgroundColor: "#eaf2fac0",
+                        display: "flex",
                         borderRadius: 2,
                         boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.1)",
-                        animation: "fadeIn 0.3s ease-in-out",
-                        "@keyframes fadeIn": {
-                          from: { opacity: 0, transform: "translateY(10px)" },
-                          to: { opacity: 1, transform: "translateY(0)" },
-                        },
                       }}
                     >
-                      {megaMenus[item.mega].map((col) => (
-                        <Box key={col.category}>
-                          <Typography
-                            variant="subtitle1"
-                            sx={{ fontWeight: "bold", mb: 1, color: "#2B3674" }}
+                      {/* Left side list */}
+                      <Box
+                        sx={{
+                          width: "35%",
+                          borderRight: "1px solid #eee",
+                          pr: 2,
+                        }}
+                      >
+                        {megaMenus.products.map((col) => (
+                          <Box
+                            key={col.category}
+                            onMouseEnter={() => setActiveProductFeature(col)}
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "space-between",
+                              p: 1,
+                              cursor: "pointer",
+                              "&:hover": { background: "#102458ff", color: "#f8f8f8ff" },
+                            }}
                           >
-                            {col.category}
-                          </Typography>
-                         {col.items.map((sub) => (
-  <Box
-    key={sub.text}
-    onClick={() => {
-      navigate(sub.path);
-      setActiveMega(null);
-    }}
-    sx={{
-      position: "relative",
-      cursor: "pointer",
-      color: "#2B3674",
-      px: 2,
-      py: 0.8,
-      pl: 4, // make space for dots
-      borderRadius: "6px",
-      transition: "all 0.3s ease",
-      "&::before, &::after": {
-        content: '""',
-        position: "absolute",
-        top: "50%",
-        transform: "translateY(-50%)",
-        width: "6px",
-        height: "6px",
-        borderRadius: "50%",
-        opacity: 0,
-        transition: "opacity 0.3s ease, left 0.3s ease",
-      },
-      "&::before": {
-        left: "10px",
-        backgroundColor: "#00b2ff", // dot 1 color
-      },
-      "&::after": {
-        left: "18px",
-        backgroundColor: "#ff267e", // dot 2 color
-      },
-      "&:hover::before, &:hover::after": {
-        opacity: 1,
-      },
-      "&:hover": {
-        backgroundColor: "#f9f9f9",
-        color: "#00b2ff",
-      },
-    }}
-  >
-    {sub.text}
-  </Box>
-))}
+                            <span>{col.category}</span>
+                            <ChevronRightIcon fontSize="small" sx={{"&:hover": {
+                                backgroundColor: "#04145eff",
+                                color: "#f0f3f4ff",} }}/>
+                          </Box>
+                        ))}
+                      </Box>
 
-                        </Box>
-                      ))}
+                      {/* Right side details */}
+                      <Box sx={{ flex: 1, pl: 3 }}>
+                        {activeProductFeature ? (
+                          <Box>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 1,
+                                mb: 1,
+                              }}
+                            >
+                              {activeProductFeature.icon}
+                              <Typography
+                                variant="h6"
+                                sx={{ fontWeight: "bold", color: "#2B3674" }}
+                              >
+                                {activeProductFeature.category}
+                              </Typography>
+                            </Box>
+                            <Typography sx={{ mb: 2, color: "gray" }}>
+                              {activeProductFeature.description}
+                            </Typography>
+                            {activeProductFeature.items.map((sub) => (
+                              <Button
+                                key={sub.text}
+                                variant="outlined"
+                                endIcon={<ArrowForwardIcon />}
+                                sx={{ mt: 1 }}
+                                onClick={() => {
+                                  navigate(sub.path);
+                                  setActiveMega(null);
+                                }}
+                              >
+                                {sub.text}
+                              </Button>
+                            ))}
+                          </Box>
+                        ) : (
+                          <Typography sx={{ color: "black" }}>
+                            Hover over a product to see details
+                          </Typography>
+                        )}
+                      </Box>
                     </Paper>
                   )}
                 </Box>
@@ -311,7 +388,7 @@ const Header = () => {
                       sx={{
                         cursor: "pointer",
                         p: 1,
-                        "&:hover": { background: "#f0f0f0" },
+                        "&:hover": { background: "#050d4aff" ,color:"white" },
                       }}
                       onClick={() => setLangOpen(false)}
                     >
@@ -333,7 +410,7 @@ const Header = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Drawer for Mobile Menu */}
+      {/* Drawer for Mobile */}
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
         <Box sx={{ width: 250 }}>
           <List>

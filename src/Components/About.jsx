@@ -20,6 +20,9 @@ import { useLocation } from "react-router-dom";
 import { IoTelescopeSharp } from "react-icons/io5";
 import { TbTargetArrow } from "react-icons/tb";
 import building from "../assets/building.jpg";
+import AboutService from "./AboutService";
+import AboutCore from "./AboutCore";
+import Footer from "./Footer"
 
 const slideInRight = {
   hidden: { opacity: 0, x: 100 },
@@ -338,6 +341,13 @@ const About = () => {
       <Box id="timeline-section">
         <Timeline />
       </Box>
+      <Box id="service-section">
+        <AboutService/>
+        </Box>
+        <Box>
+          <AboutCore/>
+        </Box>
+        <Footer/>
     </Box>
   );
 };

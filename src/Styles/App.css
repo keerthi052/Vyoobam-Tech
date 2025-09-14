@@ -22,4 +22,17 @@
   background: #ccc;
   opacity: 0.6;
 }
+.hero-bg {
+  background-image: url("/src/assets/your-bg.jpg");
+  background-attachment: fixed;   /* fixed bg */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
 
