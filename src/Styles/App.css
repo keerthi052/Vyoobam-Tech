@@ -1,3 +1,5 @@
+
+/* 
 .shape {
   position: absolute;
   border-radius: 50%;
@@ -14,7 +16,7 @@
 @keyframes floatShape {
   0%, 100% { transform: translateY(0) translateX(0); }
   50% { transform: translateY(-30px) translateX(20px); }
-}
+} */
 .swiper-pagination-bullet-active {
   background: linear-gradient(to right, #00e4c9, #00b2ff, #ff267e) !important;
 }
@@ -34,5 +36,6 @@
   color: white;
   text-align: center;
 }
+
 
 

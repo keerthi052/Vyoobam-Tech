@@ -36,9 +36,10 @@ const TestimonialSlider = () => {
     <Box
       sx={{
         py: 10,
-        backgroundColor: "#f5f0ff",
+        backgroundColor: "#fffffff8",
         textAlign: "center",
-        overflow: "hidden", // important to hide overflow scroll
+        overflow: "hidden",
+         // important to hide overflow scroll
       }}
     >
       {/* ✅ Logo Scrolling Container */}
@@ -61,7 +62,7 @@ const TestimonialSlider = () => {
               objectFit: "contain",
               mx: 4,
               display: "inline-block",
-              filter: "grayscale(100%)",
+              filter: "grayscale(0%)",
               transition: "all 0.3s ease-in-out",
               "&:hover": {
                 filter: "grayscale(0%)",

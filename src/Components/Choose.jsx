@@ -7,6 +7,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { motion, AnimatePresence } from "framer-motion";
+import "../Styles/FlipGallery.css"
 
 
 const features = [
@@ -75,9 +76,9 @@ const Choose = () => {
       sx={{
         py: 10,
         px: { xs: 2, md: 6 },
-        backgroundColor: "#0A2A42",
+        backgroundColor: "#01121fff",
         color: "#fff",
-        mt: 10,
+        // mt: 10,
       }}
     >
       <Box
@@ -93,32 +94,15 @@ const Choose = () => {
           <Typography variant="h4" gutterBottom>
             Why Choose Us?
           </Typography>
-          <Typography variant="body1" sx={{ mb: 4 }}>
+          <Typography variant="body1" sx={{ mb: 4 ,color:"white"}}>
             Choosing the right technology partner is crucial for the success of
             your business. Here’s why Vyoobam Tech stands out.
           </Typography>
 
           {/* Animated Image Wrapper */}
-          <Box sx={{ position: "relative", width: 450, height: 320, overflow: "hidden", borderRadius: 3, mt: 3 }}>
-      <AnimatePresence custom={direction} mode="wait">
-        <motion.img
-          key={activeIndex}
-          src={images[activeIndex]}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            borderRadius: 12,
-          }}
-        />
-      </AnimatePresence>
+          <img src={meeting} alt="meeting" className="single-effect" />
+          <Box >
+      
     </Box>
         </Box>
         {/* Right Section - Features */}
@@ -135,7 +119,7 @@ const Choose = () => {
                 elevation={3}
                 sx={{
                   p: 3,
-                  backgroundColor: "#123B5E",
+                  backgroundColor: "#021628ff",
                   color: "#fff",
                   borderRadius: 2,
                   overflow: "hidden",
@@ -176,7 +160,7 @@ const Choose = () => {
                   <Typography variant="subtitle1" fontWeight={600}>
                     {feature.title}
                   </Typography>
-                  <Typography variant="body2">{feature.description}</Typography>
+                  <Typography variant="body2" sx={{color:"white"}}>{feature.description}</Typography>
                 </Box>
               </Paper>
             </motion.div>

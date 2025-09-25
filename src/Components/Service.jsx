@@ -226,15 +226,15 @@ const Service = () => {
           position: "relative",
           py: 12,
           textAlign: "center",
-          background: "linear-gradient(120deg, #0f2027, #203a43, #2c5364)",
+          background: "#9dbddb60",
           color: "#fff",
         }}
         data-aos="fade-up"
       >
-        <Typography variant="h2" sx={{ fontWeight: "bold", mb: 2 }}>
+        <Typography variant="h2" sx={{ fontWeight: "bold", mb: 2, color:"#02164bff" }}>
           Transforming Ideas into Digital Excellence
         </Typography>
-        <Typography variant="h6" sx={{ mb: 4 }}>
+        <Typography variant="h6" sx={{ mb: 4 ,color:"#02164bff"}}>
           Enterprise-grade web, mobile, and AI-powered solutions for tomorrow’s
           business
         </Typography>
@@ -308,11 +308,11 @@ const Service = () => {
           py: 12,
           textAlign: "center",
           color: "#fff",
-          background: "linear-gradient(120deg, #203a43, #2c5364, #0f2027)",
+           background: "#9dbddb60",
         }}
         data-aos="zoom-in"
       >
-        <Typography variant="h4" sx={{ mb: 3 }}>
+        <Typography variant="h4" sx={{ mb: 3 , color:"#02164bff"}}>
           Ready to Accelerate Your Digital Transformation?
         </Typography>
         <Button

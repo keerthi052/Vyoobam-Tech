@@ -20,10 +20,11 @@ import { useLocation } from "react-router-dom";
 import { IoTelescopeSharp } from "react-icons/io5";
 import { TbTargetArrow } from "react-icons/tb";
 import building from "../assets/building.jpg";
-import AboutService from "./AboutService";
+
 import AboutCore from "./AboutCore";
 import Footer from "./Footer"
-
+import "../Styles/About.css"
+import CTA from "./CTA";
 const slideInRight = {
   hidden: { opacity: 0, x: 100 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
@@ -53,60 +54,15 @@ const About = () => {
   }, [location]);
 
   return (
-    <Box>
+     <Box className="about-section">
       <Header />
-      {/* Hero Section */}
-      {/* <Box
-        sx={{
-          backgroundImage: `linear-gradient(rgba(153, 183, 220, 0.29), rgba(0,198,255,0.8)), url(${laptopImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-         py:8,
-         mt:12,
-          color: "white",
-          textAlign: "center",
-          height: "350px",
-         
-        }}
-      > */}
-      <Box
-        id="about-hero"
-        sx={{
-          height: "450px",
-          position: "relative",
-          overflow: "hidden",
-          mt: 10,
-        }}
-      >
-        {backgroundImages.map((image, index) => (
-          <Box
-            key={index}
-            sx={{
-              backgroundImage: `url(${image})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              transition: "opacity 1.5s ease-in-out",
-              opacity: index === currentIndex ? 1 : 0,
-              zIndex: index === currentIndex ? 1 : 0,
-            }}
-          />
-        ))}
-
-        {/* Dark Overlay to dim background */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(97, 95, 95, 0.5)", // adjust opacity here
-            zIndex: 1,
-          }}
-        />
+     
+    
+      <Box  className="hero-stars" sx={{ position: "relative", height: "100vh",  }}>
+      {/* Stars Layers */}
+      <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
 
         {/* Fixed Text Content */}
         <Box
@@ -132,6 +88,7 @@ const About = () => {
               variant="h3"
               fontWeight="bold"
               sx={{ textAlign: "center", py: 5 }}
+               className="masked-text"
             >
               Empowering Digital Transformation
             </Typography>
@@ -184,17 +141,10 @@ const About = () => {
               variants={slideInRight}
             >
               <Typography variant="body1">
-                Welcome to Vyoobam Tech, where innovation meets excellence. We
-                are a premier technology solutions provider dedicated to
-                empowering businesses with cutting-edge digital solutions.
-                Founded with a vision to drive digital transformation, Vyoobam
-                Tech has grown into a trusted partner for companies looking to
-                enhance their technological capabilities and achieve their
-                business goals.
+                At Vyoobam Tech, innovation meets impact. Since our founding in 2015, we have been committed to helping businesses embrace digital transformation and thrive in an ever-changing world. From startups to enterprises, we deliver scalable, secure, and future-ready technology solutions that empower organizations to stay ahead of the competition
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ mt: 2 }}>
-                Having served a diverse range of clients, we have a proven track
-                record of delivering exceptional digital solutions.
+               We operate at the intersection of creativity, technology, and strategy—building solutions that are not just functional but transformative. Our services span across web and mobile development, data analytics, consulting, and enterprise applications, with one clear mission: to enable success for every client we partner with.
               </Typography>
             </motion.div>
           </Box>
@@ -281,7 +231,7 @@ const About = () => {
     display: "flex",          // ✅ New
     flexDirection: "column", // ✅ New
     justifyContent: "center",
-       
+    alignItems: "center",   
       }}
     >
       <IoTelescopeSharp size={70} color="#4FC3F7" />
@@ -289,8 +239,7 @@ const About = () => {
         Our Vision
       </Typography>
       <Typography variant="body1" color="rgba(255,255,255,0.8)" mt={1}>
-        To be a global leader in technology innovation, delivering
-        transformative digital solutions and shaping a better tomorrow.
+        To be a global leader in technology innovation, enabling businesses to achieve sustainable growth and lasting impact through cutting-edge digital solutions.
       </Typography>
     </Box>
 
@@ -323,30 +272,29 @@ const About = () => {
          display: "flex",          // ✅ New
     flexDirection: "column", // ✅ New
     justifyContent: "center",
+    alignItems: "center",
       }}
     >
-      <TbTargetArrow size={70} color="#4DB6AC" />
+      <TbTargetArrow size={70} color="#4FC3F7" />
       <Typography variant="h5" fontWeight="bold" mt={2} color="#fff">
         Our Mission
       </Typography>
       <Typography variant="body1" color="rgba(255,255,255,0.8)" mt={1}>
-        To deliver innovative and customized digital solutions that empower
-        businesses to thrive and succeed in the digital age.
+       To deliver customized, high-quality, and innovative solutions that align with business goals, enhance efficiency, and accelerate growth—while maintaining the highest levels of integrity, collaboration, and excellence.
       </Typography>
     </Box>
   </Box>
 </Box>
 
 
-      <Box id="timeline-section">
-        <Timeline />
-      </Box>
-      <Box id="service-section">
-        <AboutService/>
-        </Box>
+      <Box id="timeline-section" sx={{ overflowX: "visible" }}>
+      <Timeline />
+    </Box>
+      
         <Box>
           <AboutCore/>
         </Box>
+        <CTA/>
         <Footer/>
     </Box>
   );

@@ -1,0 +1,20 @@
+.single-effect {
+  --_g: 10%/45% 45% no-repeat conic-gradient(#000 0 0);
+  mask:
+    left   var(--_i,) top    var(--_g),
+    bottom var(--_i,) left   var(--_g),
+    top    var(--_i,) right  var(--_g),
+    right  var(--_i,) bottom var(--_g);
+  filter: grayscale();
+  transition: .3s linear;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px; /* control size */
+  border-radius: 12px; /* optional smooth corners */
+  display: block;
+}
+
+.single-effect:hover {
+  --_i: 10%;
+  filter: grayscale(0);
+}

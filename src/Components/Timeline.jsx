@@ -1,209 +1,214 @@
-import React, { useRef } from "react";
-import { Box, Typography, Tooltip } from "@mui/material";
-import {
-  TrendingUp,
-  EmojiObjects,
-  Group,
-  TrackChanges,
-  BusinessCenter,
-  Cloud,
-  ShowChart,
-} from "@mui/icons-material";
-import { motion, useInView } from "framer-motion";
+import React, { useEffect, useRef, useState } from 'react';
 
-// Brand Gradient Colors
-const themeColors = {
-  start: "#8BC34A",
-  end: "#2196F3",
-};
-
-// Milestones Data
 const milestones = [
   {
-    year: "2022",
-    title: "Launch",
-    description: "Vyoobam Tech initial launch",
-    details: "Company founded and core team setup.",
-    Icon: TrendingUp,
+    year: 2015,
+    date: '2015',
+    description: 'Founded as a web and IT solutions provider.',
   },
   {
-    year: "2023",
-    title: "Academic",
-    description: "Vyoobam Academic Initiatives",
-    details: "Launched training & internship programs.",
-    Icon: EmojiObjects,
+    year: 2022,
+    date: '2022',
+    description: 'Expanded as a tech hub in Kumbakonam.',
   },
   {
-    year: "2024",
-    title: "Community",
-    description: "Business & dev community building",
-    details: "Partnered with startups and communities.",
-    Icon: Group,
+    year: 2023,
+    date: '2023',
+    description: 'Launched Vyoobam Academic across Tamil Nadu, training students in advanced IT skills.',
   },
   {
-    year: "2025",
-    title: "AI Products",
-    description: "Launching AI-based solutions",
-    details: "Product suite for healthcare & retail AI.",
-    Icon: TrackChanges,
+    year: 2024,
+    date: '2024',
+    description: 'Released flagship products Market Metrics and E-Grocery Mart.',
   },
   {
-    year: "2026",
-    title: "Expansion",
-    description: "Global expansion plans",
-    details: "Setup offices in Singapore & Dubai.",
-    Icon: BusinessCenter,
-  },
-  {
-    year: "2027",
-    title: "SaaS Platform",
-    description: "Launching cloud-based SaaS",
-    details: "Enterprise subscription platform.",
-    Icon: Cloud,
-  },
-  {
-    year: "2028",
-    title: "IPO",
-    description: "Planning public offering",
-    details: "Investor onboarding and IPO prep.",
-    Icon: ShowChart,
+    year: 2025,
+    date: '2025',
+    description: 'Delivered AI, analytics, and mobile app projects; trained 30+ interns through our learning ecosystem.',
   },
 ];
 
-const spacingX = 200;
-const startX = 60;
 
 const Timeline = () => {
-  const svgWidth = startX * 2 + spacingX * (milestones.length - 1);
-  const pathRef = useRef();
-  const isInView = useInView(pathRef, { once: true });
+  const containerRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const pathD = milestones
-    .map((_, i) => {
-      const x = startX + spacingX * i;
-      const y = 160;
-      if (i === 0) return `M ${x} ${y}`;
-      const prevX = startX + spacingX * (i - 1);
-      const controlX = (prevX + x) / 2;
-      const controlY = i % 2 === 0 ? 60 : 260;
-      return `Q ${controlX} ${controlY}, ${x} ${y}`;
-    })
-    .join(" ");
+  const handleScroll = () => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const scrollTop = window.scrollY - container.offsetTop;
+    const sectionHeight = container.offsetHeight / milestones.length;
+
+    let index = Math.floor(scrollTop / sectionHeight);
+    if (index < 0) index = 0;
+    if (index >= milestones.length) index = milestones.length - 1;
+
+    setActiveIndex(index);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const progress = ((activeIndex + 1) / milestones.length) * 180;
 
   return (
-    <Box sx={{ overflowX: "auto", py: 12, background: "#e1daff3f" }}>
-       <Typography
-              variant="h3"
-              fontWeight="bold"
-              sx={{ textAlign: "center", py: 5,pt:1}}
-            >
-            Milestone
-            </Typography>
-      <Box sx={{ width: svgWidth, mx: "auto", position: "relative", height: 420 }}>
-        <svg width={svgWidth} height="100%" style={{ position: "absolute", top: 0 }}>
-          <defs>
-            <linearGradient id="timeline-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor={themeColors.start} />
-              <stop offset="100%" stopColor={themeColors.end} />
-            </linearGradient>
-          </defs>
-
-          <motion.path
-            ref={pathRef}
-            d={pathD}
-            fill="none"
-            stroke="url(#timeline-gradient)"
-            strokeWidth={10}
-            strokeLinecap="round"
-            initial={{ pathLength: 0 }}
-            animate={isInView ? { pathLength: 1 } : {}}
-            transition={{ duration: 2, ease: "easeInOut" }}
-          />
-
-          {milestones.map((_, i) => {
-            const x = startX + spacingX * i;
-            const y = 160;
-            const lineY = i % 2 === 0 ? y - 90 : y + 90;
-            return (
-              <g key={i}>
-                <circle cx={x} cy={y} r={8} fill="#e1aecd95" stroke="#888" strokeWidth={2} />
-                <line
-                  x1={x}
-                  y1={y}
-                  x2={x}
-                  y2={lineY}
-                  stroke="#bbb"
-                  strokeDasharray="4,2"
-                  strokeWidth={1}
-                />
-              </g>
-            );
-          })}
-        </svg>
-
-        {/* Content */}
-        {milestones.map(({ year, title, description, details, Icon }, i) => {
-          const x = startX + spacingX * i;
-          const y = i % 2 === 0 ? 20 : 230;
-          return (
-            <Box
-              key={i}
-              sx={{
-                position: "absolute",
-                top: y,
-                left: x - 60,
-                width: 120,
-                color:"#393131f9",
-                textAlign: "center",
-              }}
-            >
-              <Tooltip
-                title={
-                  <Box sx={{ px: 1, py: 0.5 }}>
-                    <Typography fontSize={12} fontWeight="bold" >
-                      {details}
-                    </Typography>
-                  </Box>
-                }
-                arrow
-                enterTouchDelay={0}
-                
-              >
-                <Box
-                  sx={{
-                    width: 64,
-                    height: 64,
-                    borderRadius: "50%",
-                    border: "2px solid #aeaeae88",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    mx: "auto",
-                    backgroundColor: "#fff",
-                    boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-                    transition: "transform 0.2s ease, background 0.3s ease",
-                    "&:hover": {
-                      transform: "scale(1.1)",
-                      backgroundColor:"#9ad3df88",
-                      color: "#fcfafaff",
-                    },
+    <>
+     <h2 style={{
+      textAlign: 'center',
+      fontSize: '48px',
+      fontWeight: '800',
+      margin: '40px 0 0 0',
+      letterSpacing: '1px',
+      color: '#222',
+        
+    }}>
+      Our Journey
+    </h2>
+      {/* Scroll Container */}
+      <div style={{ height: `${milestones.length * 100}vh`, position: 'relative', }} ref={containerRef}>
+        {/* Pinned Content */}
+        <div
+          style={{
+            position: 'sticky',
+            top: 0,
+            height: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            padding: '0 20vw',
+            boxSizing: 'border-box',
+            background: '#fff',
+           overflowX: 'hidden'
+          }}
+        >
+          {/* Left Timeline Line */}
+          <div style={{ width: '10%', display: 'flex', justifyContent: 'center' , transform: 'translateX(-30px)',}}>
+            <div style={{ position: 'relative', height: '300px', width: '2px', background: '#000' }}>
+              {milestones.map((_, i) => (
+                <div
+                  key={i}
+                  style={{
+                    position: 'absolute',
+                    top: `${(i / (milestones.length - 1)) * 100}%`,
+                    left: '-4px',
+                    width: '10px',
+                    height: '2px',
+                    background: i === activeIndex ? '#1cdcfeff' : '#888',
                   }}
-                >
-                  <Icon sx={{ fontSize: 28, color: "#c59191ff" }} />
-                </Box>
-              </Tooltip>
-              <Typography mt={1} fontWeight="bold" fontSize={14}>
-                {year}
-              </Typography>
-              <Typography fontSize={13}>{title}</Typography>
-              <Typography fontSize={12} color="text.secondary">
-                {description}
-              </Typography>
-            </Box>
-          );
-        })}
-      </Box>
-    </Box>
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Center Year + Circle */}
+          
+{/* Center - Year with Infinity behind it */}
+<div
+  style={{
+    position: 'relative',
+    width: '40%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  {/* Large Infinity in background behind the year */}
+  <div
+    style={{
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: '220px',
+      height: '120px',
+      zIndex: 0,
+      pointerEvents: 'none',
+      
+    }}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 256 120"
+      width="100%"
+      height="100%"
+    >
+      {/* Base path - light grey infinity */}
+      <path
+        d="M106.6,60l-20,25a47.9,47.9,0,1,1,0-70l80,70a47.9,47.9,0,1,0,0-70l-20,25"
+        fill="none"
+        stroke="#eee"
+        strokeWidth="12"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Red progress path */}
+      <path
+        d="M106.6,60l-20,25a47.9,47.9,0,1,1,0-70l80,70a47.9,47.9,0,1,0,0-70l-20,25"
+        fill="none"
+        stroke="#00d4fa63"
+        strokeWidth="12"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeDasharray="400"
+        strokeDashoffset={400 - (progress / 180) * 400}
+        style={{ transition: 'stroke-dashoffset 0.3s ease' }}
+      />
+    </svg>
+  </div>
+
+  {/* Stacked Years in front of infinity */}
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '20px',
+      zIndex: 1,
+    }}
+  >
+    {[activeIndex - 1, activeIndex, activeIndex + 1].map((i) => {
+      if (i < 0 || i >= milestones.length) return null;
+
+      const isActive = i === activeIndex;
+
+      return (
+        <div
+          key={milestones[i].year}
+          style={{
+            fontSize: isActive ? '80px' : '40px',
+            fontWeight: isActive ? '700' : '400',
+            opacity: isActive ? 1 : 0.4,
+            color: isActive ? '#270155ff' : '#999',
+            transition: 'all 0.3s ease',
+             transform: 'translateX(-80px)',
+          }}
+        >
+          {milestones[i].year}
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+
+
+
+          {/* Right Description */}
+          <div style={{ width: '40%' }}>
+            <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#777', marginBottom: '10px' }}>
+              {milestones[activeIndex].date}
+            </div>
+            <div style={{ fontSize: '18px', lineHeight: '1.5' }}>
+              {milestones[activeIndex].description}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

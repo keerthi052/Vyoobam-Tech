@@ -1,5 +1,5 @@
 //import Demo from "./Components/Demo"
-import Home from "./components/home";
+import Home from "./Components/home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./Components/About";
 import Service from "./Components/Service";
@@ -11,6 +11,7 @@ import "./Styles/Global.css"
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import MainProduct from "./Components/MainProduct";
 
 
 
@@ -44,6 +45,7 @@ function App() {
             <Route path="/careers" element={<Careers />} />
             <Route path="/intership" element={<Internship />} />
             <Route path="/Contact" element={<Contact />} />
+            <Route path="/product" element={<MainProduct />} />
           </Routes>
         </Router>
       </div>

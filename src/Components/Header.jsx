@@ -82,7 +82,7 @@ const Header = () => {
           style={{ width: 50, height: 50, objectFit: "contain" }}
         />
       ),
-      items: [{ text: "Explore Market Metrics", path: "/products/metrics" }],
+      items: [{ text: "Explore Market Metrics", path: "/product" }],
       },
       {
         category: "Event Ease",
@@ -94,7 +94,7 @@ const Header = () => {
           style={{ width: 50, height: 50, objectFit: "contain" }}
         />
       ),
-      items: [{ text: "Explore Market Metrics", path: "/products/metrics" }],
+      items: [{ text: "Explore Market Metrics", path: "/event" }],
       },
       {
         category: "Sales Sage",
@@ -106,13 +106,13 @@ const Header = () => {
           style={{ width: 50, height: 50, objectFit: "contain" }}
         />
       ),
-      items: [{ text: "Explore Market Metrics", path: "/products/metrics" }],
+      items: [{ text: "Explore Market Metrics", path: "/sales" }],
       },
       {
         category: "Vyoobam Nudge",
         description: "Smart reminder & notification platform",
         icon: <NotificationsActiveIcon sx={{ color: "#1976d2" }} />,
-        items: [{ text: "Explore Vyoobam Nudge", path: "/products/nudge" }],
+        items: [{ text: "Explore Vyoobam Nudge", path: "/vyoobam" }],
       },
       {
         category: "E-GroceryMart",
@@ -124,7 +124,7 @@ const Header = () => {
           style={{ width: 50, height: 50, objectFit: "contain" }}
         />
       ),
-      items: [{ text: "Explore Market Metrics", path: "/products/metrics" }],
+      items: [{ text: "Explore Market Metrics", path: "/mart" }],
       },
     ],
   };
@@ -135,7 +135,7 @@ const Header = () => {
     mx: 1,
     position: "relative",
     color: "#010830ff",
-    fontWeight: 500,
+    fontSize:"15px",
     textTransform: "none",
     backgroundColor: "transparent",
     "&::after": {
@@ -160,7 +160,7 @@ const Header = () => {
         sx={{
           zIndex: 1201,
           boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-          background: "#ffffffff",
+          background: "#fcfbfeff",
         }}
       >
         <Toolbar
@@ -179,9 +179,9 @@ const Header = () => {
               flexGrow: 1,
               display: "flex",
               alignItems: "center",
-              fontFamily: "'Russo One', sans-serif",
+              
               fontSize: { xs: "18px", md: "26px" },
-              fontWeight: "bold",
+              
               color: "#000a43ff",
               cursor: "pointer",
             }}
@@ -269,7 +269,7 @@ const Header = () => {
                         left: "-150px",
                         minWidth: "950px",
                         p: 3,
-                        backgroundColor: "#eaf2fac0",
+                        backgroundColor: "#fdfeffff",
                         display: "flex",
                         borderRadius: 2,
                         boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.1)",
@@ -319,7 +319,7 @@ const Header = () => {
                               {activeProductFeature.icon}
                               <Typography
                                 variant="h6"
-                                sx={{ fontWeight: "bold", color: "#2B3674" }}
+                                sx={{  color: "#2B3674" }}
                               >
                                 {activeProductFeature.category}
                               </Typography>

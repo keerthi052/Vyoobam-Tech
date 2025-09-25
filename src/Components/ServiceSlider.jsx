@@ -14,44 +14,41 @@ import "slick-carousel/slick/slick-theme.css";
 const rawServices = [
   {
     id: 1,
-    title: "IT Consultancy and Support",
+    title: "Web Development",
     icon: <HeadsetMicIcon sx={{ fontSize: 40, color: "#fff" }} />,
     bgColor: "#4caf50",
- description: "Expert advice and support for all your IT needs."
+ description: "Responsive, secure, and SEO-ready websites that build your online identity and accelerate growth"
   },
   {
     id: 2,
-    title: "Custom Software Development",
+    title: "Mobile App Development",
     icon: <MemoryIcon sx={{ fontSize: 40, color: "#fff" }} />,
     bgColor: "#fb923c",
-      description: "Tailored software solutions to grow your business."
+      description: "High-performance apps for iOS and Android with intuitive interfaces and seamless user experiences"
   },
   {
     id: 3,
-    title: "CloudSphere Solutions",
+    title: "UI/UX Design",
     icon: <CloudIcon sx={{ fontSize: 40, color: "#fff" }} />,
     bgColor: "#6366f1",
   
-     description: "Cloud migration, hosting, and scalable infrastructure."
+     description: " – Human-centered design that delights users, increases adoption, and drives conversions"
   },
   {
     id: 4,
-    title: "Mobile Application Development",
+    title: "Data Analytics & Visualization",
     icon: <MobileFriendlyIcon sx={{ fontSize: 40, color: "#fff" }} />,
     bgColor: "#ef4444",
+     description: " –Transforming raw data into insights with dashboards, predictive analytics, and intelligent reporting"
   },
   {
-    id: 4,
-    title: "Mobile Application Development",
+    id: 5,
+    title: "It consulting",
     icon: <MobileFriendlyIcon sx={{ fontSize: 40, color: "#fff" }} />,
-    bgColor: "#ef4444",
+    bgColor: "#2ab8b14d",
+     description: " – Strategic IT consulting to optimize processes, adopt the right technology stack, and future-proof operations."
   },
-  {
-    id: 4,
-    title: "Mobile Application Development",
-    icon: <MobileFriendlyIcon sx={{ fontSize: 40, color: "#fff" }} />,
-    bgColor: "#ef4444",
-  },
+  
 ];
 
 const ServiceSlider = () => {
@@ -201,14 +198,14 @@ const ServiceSlider = () => {
             {/* Title */}
             <Typography
             className="title"
-              variant="subtitle1"
+              variant="h6"
               sx={{ fontWeight: "bold", color: "#111827", mb: 2 }}
             >
               {service.title}
             </Typography>
             <Typography
   className="description"
-  variant="body2"
+  variant="body"
   sx={{
     color: "#e5e7eb",
     mt: 1,
