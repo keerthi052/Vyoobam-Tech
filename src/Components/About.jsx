@@ -20,6 +20,7 @@ import { useLocation } from "react-router-dom";
 import { IoTelescopeSharp } from "react-icons/io5";
 import { TbTargetArrow } from "react-icons/tb";
 import building from "../assets/building.jpg";
+import wave from "../assets/wave1.jpg"
 
 import AboutCore from "./AboutCore";
 import Footer from "./Footer"
@@ -56,130 +57,128 @@ const About = () => {
   return (
      <Box className="about-section">
       <Header />
-     
-    
-      <Box  className="hero-stars" sx={{ position: "relative", height: "100vh",  }}>
-      {/* Stars Layers */}
-      <div id="stars"></div>
-      <div id="stars2"></div>
-      <div id="stars3"></div>
+     {/* ✅ Simple Hero Section with Background Image */}
+{/* 🔹 HERO SECTION */}
+<Box
+  sx={{
+    position: "relative",
+    backgroundImage: `url(${wave})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    color: "#0b0b0bff",
+    py: 10,
+    px: 2,
+    mt:12
+  }}
+>
+  <Typography variant="h2"  fontSize="58px" fontWeight="400" sx={{ textAlign: "center", mb: 2 }}>
+    Empowering Digital Transformation
+  </Typography>
+  <Typography variant="subtitle1">
+    <span
+      onClick={() => navigate("/")}
+      style={{ cursor: "pointer", fontWeight: "bold" }}
+    >
+      Home
+    </span>
+    &nbsp;&gt;&nbsp; <span style={{ fontWeight: "bold" }}>About Us</span>
+  </Typography>
+ 
+</Box>
 
-        {/* Fixed Text Content */}
-        <Box
-          sx={{
-            position: "relative",
-            zIndex: 2,
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            color: "#fdffff7a",
-            textAlign: "center",
-            px: 2,
-          }}
+{/* 🔹 ABOUT CONTENT SECTION (Separate from Hero) */}
+<Box
+  sx={{
+    px: 4,
+    py: 10,
+    display: "grid",
+    gridTemplateColumns: { xs: "1fr", md: "6fr 4fr" }, // slightly reduced right
+    columnGap: { xs: 3, md: 6 }, // ✅ gap between left & right
+    alignItems: "center",
+   background: "linear-gradient(180deg, #fafafbff 0%, #9db2e1c5 150%)", // ✅ dark transparent bg
+    color: "#fff",                      // ✅ text white
+    mt: 0,    
+  }}
+>
+  {/* Left Text */}
+  <Box sx={{ minWidth: 0 }}>
+    <motion.div initial="hidden" whileInView="visible" variants={slideInRight}>
+      <Typography
+          variant="h2"
+          sx={{ mb: 1,ml:3, color: "#030303ff",fontWeight: 600, fontSize: "45px" }}
         >
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={slideInRight}
+          Our Company
+        </Typography>
+      <Typography variant="h6" color="black" sx={{mt:4,mb:3,ml:5}} gutterBottom>
+       At Vyoobam Tech, innovation meets impact. Since our founding in 2015, 
+       we have been committed to helping businesses embrace digital transformation and
+        thrive in an ever-changing world. From startups to enterprises, we deliver scalable, secure, 
+        and future-ready technology solutions that empower 
+       organizations to stay ahead of the competition
+      </Typography>
+      <Typography variant="h6" color="text.secondary" sx={{mb:8,ml:5}} >
+       At Vyoobam Tech, innovation meets impact. Since our founding in 2015, 
+       we have been committed to helping businesses embrace digital transformation and thrive in
+        an ever-changing world. From startups to enterprises, we deliver scalable, secure, and 
+       future-ready technology solutions that empower organizations to stay ahead of the competition
+      </Typography>
+    </motion.div>
+  </Box>
+
+  {/* Right Image */}
+  <Box sx={{ minWidth: 0, display: "flex", justifyContent: "center" ,mr:5}}>
+    <Card
+      elevation={2}
+      sx={{
+        borderRadius: 4,
+        maxWidth: 400, // ✅ card size limited
+        width: "100%",
+      }}
+    >
+      <CardContent>
+        <Box
+          component="img"
+          src={teamMeetingImage}
+          alt="Team Meeting"
+          sx={{
+            width: "100%",
+            height: "auto",
+            borderRadius: 1,
+            display: "block",
+          }}
+        />
+        <Box sx={{ display: "flex", justifyContent: "flex-start", mt: 2 }}>
+          <Button
+            variant="contained"
+            sx={{
+              px: 4,
+              py: 1.5,
+              borderRadius: "30px",
+              fontSize: "1rem",
+              fontWeight: 400,
+              background: "linear-gradient(90deg, #3f5eec, #00e4c9)",
+              textTransform: "none",
+              "&:hover": {
+                background: "linear-gradient(90deg, #00e4c9, #3f5eec)",
+              },
+            }}
+            onClick={() => navigate("/services")}
           >
-            <Typography
-              variant="h3"
-              fontWeight="bold"
-              sx={{ textAlign: "center", py: 5 }}
-               className="masked-text"
-            >
-              Empowering Digital Transformation
-            </Typography>
-            <Typography variant="subtitle1" sx={{ mt: 0 }}>
-              <span
-                onClick={() => navigate("/")}
-                style={{
-                  cursor: "pointer",
-                  fontWeight: "bold",
-                }}
-              >
-                Home
-              </span>
-              &nbsp;&gt;&nbsp;{" "}
-              <span style={{ fontWeight: "bold" }}>About Us</span>
-            </Typography>
-          </motion.div>
+            Explore Us →
+          </Button>
         </Box>
-      </Box>
+      </CardContent>
+    </Card>
+  </Box>
+</Box>
 
-      <Container maxWidth="lg" sx={{ py: 6 }}>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={slideInRight}
-        >
-          <Typography variant="h4" gutterBottom>
-            With years of experience, our team excels in Data Analytics, Data
-            Visualization, and Mobile App Development, leveraging the latest
-            technologies for superior results.
-          </Typography>
-        </motion.div>
 
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "7fr 5fr",
-            columnGap: { xs: 2, md: 4 },
-            alignItems: "center",
-            marginTop: 4,
-            marginBottom: 6,
-            flexDirection: { xs: "column", md: "row" },
-          }}
-        >
-          {/* Left – text */}
-          <Box sx={{ minWidth: 0 }}>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={slideInRight}
-            >
-              <Typography variant="body1">
-                At Vyoobam Tech, innovation meets impact. Since our founding in 2015, we have been committed to helping businesses embrace digital transformation and thrive in an ever-changing world. From startups to enterprises, we deliver scalable, secure, and future-ready technology solutions that empower organizations to stay ahead of the competition
-              </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mt: 2 }}>
-               We operate at the intersection of creativity, technology, and strategy—building solutions that are not just functional but transformative. Our services span across web and mobile development, data analytics, consulting, and enterprise applications, with one clear mission: to enable success for every client we partner with.
-              </Typography>
-            </motion.div>
-          </Box>
-
-          {/* Right – image card */}
-          <Box sx={{ minWidth: 0 }}>
-            <Card elevation={3} sx={{ borderRadius: 2 }}>
-              <CardContent>
-                <Box
-                  component="img"
-                  src={teamMeetingImage}
-                  alt="Team Meeting"
-                  sx={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: 1,
-                    display: "block",
-                  }}
-                />
-                <Box
-                  sx={{ display: "flex", justifyContent: "flex-start", mt: 2 }}
-                >
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    sx={{ borderRadius: 5, height: 40, px: 3 }}
-                  >
-                    Contact Us
-                  </Button>
-                </Box>
-              </CardContent>
-            </Card>
-          </Box>
-        </Box>
-      </Container>
       <Box
   sx={{
     py: 10,
@@ -200,7 +199,7 @@ const About = () => {
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: "rgba(0, 0, 0, 0.5)", // Optional dim effect
+      backgroundColor: "rgba(6, 6, 6, 0.5)", // Optional dim effect
       zIndex: 1,
      
     },
@@ -235,7 +234,7 @@ const About = () => {
       }}
     >
       <IoTelescopeSharp size={70} color="#4FC3F7" />
-      <Typography variant="h5" fontWeight="bold" mt={2} color="#fff">
+      <Typography variant="h5"  mt={2} color="#fff">
         Our Vision
       </Typography>
       <Typography variant="body1" color="rgba(255,255,255,0.8)" mt={1}>
@@ -276,7 +275,7 @@ const About = () => {
       }}
     >
       <TbTargetArrow size={70} color="#4FC3F7" />
-      <Typography variant="h5" fontWeight="bold" mt={2} color="#fff">
+      <Typography variant="h5" mt={2} color="#fff">
         Our Mission
       </Typography>
       <Typography variant="body1" color="rgba(255,255,255,0.8)" mt={1}>

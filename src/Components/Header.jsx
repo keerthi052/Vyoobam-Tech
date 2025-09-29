@@ -94,7 +94,7 @@ const Header = () => {
           style={{ width: 50, height: 50, objectFit: "contain" }}
         />
       ),
-      items: [{ text: "Explore Market Metrics", path: "/event" }],
+      items: [{ text: "Explore Market Metrics", path: "/Event" }],
       },
       {
         category: "Sales Sage",
@@ -106,7 +106,7 @@ const Header = () => {
           style={{ width: 50, height: 50, objectFit: "contain" }}
         />
       ),
-      items: [{ text: "Explore Market Metrics", path: "/sales" }],
+      items: [{ text: "Explore Market Metrics", path: "/Sales" }],
       },
       {
         category: "Vyoobam Nudge",
@@ -124,7 +124,7 @@ const Header = () => {
           style={{ width: 50, height: 50, objectFit: "contain" }}
         />
       ),
-      items: [{ text: "Explore Market Metrics", path: "/mart" }],
+      items: [{ text: "Explore Market Metrics", path: "/Allproduct" }],
       },
     ],
   };
@@ -133,9 +133,11 @@ const Header = () => {
 
   const menuButtonStyles = {
     mx: 1,
+    fontFamily: "'Source Sans Pro', serif",
+    
     position: "relative",
     color: "#010830ff",
-    fontSize:"15px",
+    fontSize: { xs: "18px", md: "16px" },
     textTransform: "none",
     backgroundColor: "transparent",
     "&::after": {
@@ -179,7 +181,7 @@ const Header = () => {
               flexGrow: 1,
               display: "flex",
               alignItems: "center",
-              
+              fontWeight:"400",
               fontSize: { xs: "18px", md: "26px" },
               
               color: "#000a43ff",
@@ -229,8 +231,10 @@ const Header = () => {
                           left: "-50px",
                           minWidth: "400px",
                           p: 3,
-                          backgroundColor: "#eaf2fac0",
+                          fontFamily: "'Source Sans Pro'",
+                          backgroundColor: "#fbfcfdff",
                           borderRadius: 2,
+                          fontSize: { xs: "18px", md: "17px" },
                           boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.1)",
                         }}
                       >
@@ -272,6 +276,8 @@ const Header = () => {
                         backgroundColor: "#fdfeffff",
                         display: "flex",
                         borderRadius: 2,
+                        fontSize: { xs: "18px", md: "17px" },
+                        fontFamily: "'Source Sans Pro', serif",
                         boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.1)",
                       }}
                     >
@@ -318,13 +324,13 @@ const Header = () => {
                             >
                               {activeProductFeature.icon}
                               <Typography
-                                variant="h6"
+                                variant="h6" 
                                 sx={{  color: "#2B3674" }}
                               >
                                 {activeProductFeature.category}
                               </Typography>
                             </Box>
-                            <Typography sx={{ mb: 2, color: "gray" }}>
+                            <Typography  sx={{ mb: 2, color: "gray" }}>
                               {activeProductFeature.description}
                             </Typography>
                             {activeProductFeature.items.map((sub) => (
@@ -380,6 +386,7 @@ const Header = () => {
                     right: 0,
                     minWidth: "150px",
                     p: 1,
+                    fontFamily: "'Crimson Text', serif"
                   }}
                 >
                   {languages.map((lang) => (

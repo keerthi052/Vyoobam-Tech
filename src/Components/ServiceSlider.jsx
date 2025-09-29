@@ -205,7 +205,7 @@ const ServiceSlider = () => {
             </Typography>
             <Typography
   className="description"
-  variant="body"
+  variant="body1"
   sx={{
     color: "#e5e7eb",
     mt: 1,

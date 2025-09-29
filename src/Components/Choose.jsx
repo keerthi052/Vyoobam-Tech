@@ -76,7 +76,7 @@ const Choose = () => {
       sx={{
         py: 10,
         px: { xs: 2, md: 6 },
-        backgroundColor: "#01121fff",
+        backgroundColor: "#01061fff",
         color: "#fff",
         // mt: 10,
       }}
@@ -91,10 +91,10 @@ const Choose = () => {
       >
           {/* Left: Animated Image Transition */}
         <Box>
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h2"  gutterBottom>
             Why Choose Us?
           </Typography>
-          <Typography variant="body1" sx={{ mb: 4 ,color:"white"}}>
+          <Typography variant="body1"fontSize={16} fontWeight={500} sx={{ mb: 4 ,color:"white"}}>
             Choosing the right technology partner is crucial for the success of
             your business. Here’s why Vyoobam Tech stands out.
           </Typography>
@@ -157,10 +157,10 @@ const Choose = () => {
 
                 {/* Text */}
                 <Box>
-                  <Typography variant="subtitle1" fontWeight={600}>
+                  <Typography variant="h6" fontWeight={500} fontSize={18}>
                     {feature.title}
                   </Typography>
-                  <Typography variant="body2" sx={{color:"white"}}>{feature.description}</Typography>
+                  <Typography variant="body" fontWeight={300} fontSize={14} sx={{color:"white"}}>{feature.description}</Typography>
                 </Box>
               </Paper>
             </motion.div>

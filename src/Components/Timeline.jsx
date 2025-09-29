@@ -1,30 +1,37 @@
 import React, { useEffect, useRef, useState } from 'react';
-
+import { Typography } from "@mui/material";
+import laptop from "../assets/laptop.jpg"
+import laptop2 from "../assets/laptop2.jpg"
 const milestones = [
   {
     year: 2015,
     date: '2015',
     description: 'Founded as a web and IT solutions provider.',
+    image:laptop
   },
   {
     year: 2022,
     date: '2022',
     description: 'Expanded as a tech hub in Kumbakonam.',
+    image:laptop2
   },
   {
     year: 2023,
     date: '2023',
     description: 'Launched Vyoobam Academic across Tamil Nadu, training students in advanced IT skills.',
+    image:laptop
   },
   {
     year: 2024,
     date: '2024',
     description: 'Released flagship products Market Metrics and E-Grocery Mart.',
+    image:laptop2
   },
   {
     year: 2025,
     date: '2025',
     description: 'Delivered AI, analytics, and mobile app projects; trained 30+ interns through our learning ecosystem.',
+    image:laptop
   },
 ];
 
@@ -56,17 +63,18 @@ const Timeline = () => {
 
   return (
     <>
-     <h2 style={{
-      textAlign: 'center',
-      fontSize: '48px',
-      fontWeight: '800',
-      margin: '40px 0 0 0',
-      letterSpacing: '1px',
-      color: '#222',
-        
-    }}>
-      Our Journey
-    </h2>
+     <Typography
+        variant="h2"
+        sx={{
+          textAlign: "center",
+          fontWeight: 600,fontSize:"55px",
+          letterSpacing: "1px",
+          color: "#060606ff",
+          mt:15   // spacing below heading
+        }}
+      >
+        Our Journey
+      </Typography>
       {/* Scroll Container */}
       <div style={{ height: `${milestones.length * 100}vh`, position: 'relative', }} ref={containerRef}>
         {/* Pinned Content */}
@@ -203,6 +211,15 @@ const Timeline = () => {
               {milestones[activeIndex].date}
             </div>
             <div style={{ fontSize: '18px', lineHeight: '1.5' }}>
+               <img
+    src={milestones[activeIndex].image}
+    alt={milestones[activeIndex].year}
+    style={{
+      width: "100px",        // 🔹 adjust kutty/perusa
+      height: "auto",
+      marginBottom: "20px",
+    }}
+  /><br />
               {milestones[activeIndex].description}
             </div>
           </div>

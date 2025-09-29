@@ -1,5 +1,5 @@
 //import Demo from "./Components/Demo"
-import Home from "./Components/home";
+import Home from "./Components/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./Components/About";
 import Service from "./Components/Service";
@@ -7,11 +7,15 @@ import Contact from "./Components/Contact";
 import Careers from "./Components/Careers";
 import Internship from "./Components/Internship";
 import "./Styles/App.css";
-import "./Styles/Global.css"
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./Components/theme.jsx"
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import MainProduct from "./Components/MainProduct";
+import Event from "./Components/Event"
+import Sales from "./Components/Sales"
+import AllProduct from "./Components/AllProduct.jsx";
 
 
 
@@ -31,6 +35,7 @@ function App() {
 
   return (
     <>
+    <ThemeProvider theme={theme}>
       <div className="animated-bg">
         <div className="shape shape1"></div>
         <div className="shape shape2"></div>
@@ -46,9 +51,13 @@ function App() {
             <Route path="/intership" element={<Internship />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path="/product" element={<MainProduct />} />
+            <Route path="/Event" element={<Event />} />
+            <Route path="/Sales" element={<Sales />} />
+            <Route path="/Allproduct" element={<AllProduct/>} />
           </Routes>
         </Router>
       </div>
+      </ThemeProvider>
     </>
   );
 }

@@ -84,7 +84,7 @@ const TestimonialSlider = () => {
       </style>
 
       {/* Testimonial Section */}
-      <Typography variant="h4" fontWeight="bold" gutterBottom mt={5} mb={5}>
+      <Typography variant="h2" color="black" gutterBottom mt={5} mb={5}>
         Our Clients Say
       </Typography>
 

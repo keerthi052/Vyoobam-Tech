@@ -72,7 +72,7 @@ const Footer = () => {
                 <Typography variant="h6" gutterBottom color="white" sx={{mb:3}}>
                   FOOTER CONTENT
                 </Typography>
-                <Typography variant="body" color="white" >
+                <Typography variant="body1" color="white" >
                    Vyoobam Tech is a leading technology solutions company providing innovative<br /> software, mobile, and web solutions to businesses globally.
                 </Typography>
               </Box>

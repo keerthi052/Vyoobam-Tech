@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import overviewImage from "../assets/Market.jpg";
-import logo from "../assets/marketproduct.png"; // replace with your image
+import logo from "../assets/marketproduct1.png"; // replace with your image
 import Header from "./Header";
 import Footer from "./Footer";
 import CTA from "./CTA";
@@ -35,7 +35,7 @@ const MainProduct = () => {
       />
     </Box>
 
-    <Typography variant="h2" fontWeight="bold" gutterBottom>
+    <Typography variant="h4"  fontSize="58px" fontWeight="600"   mb="3px"color="black"  gutterBottom>
       Market Metrics
     </Typography>
 
@@ -54,7 +54,7 @@ const MainProduct = () => {
     </Typography>
 
     <Typography
-      variant="body1"
+      variant="h6" fontWeight={500}
       color="text.secondary"
       sx={{ maxWidth: "700px", mx: "auto" }}
     >
@@ -65,14 +65,21 @@ const MainProduct = () => {
     <Button
       variant="contained"
       sx={{
-        mt: 4,
-        px: 5,
-        py: 1.4,
+        mt: 6,
+        px: 4,
+        py: 1.5,
         borderRadius: "30px",
+        fontSize: "1rem",
+        fontWeight: 400,
+        background: "linear-gradient(90deg, #3f5eec, #00e4c9)", // your logo theme color
         textTransform: "none",
+        "&:hover": {
+          background: "linear-gradient(90deg, #00e4c9, #3f5eec)",
+        },
       }}
+      onClick={() => navigate("/services")}
     >
-      Get Started
+      Explore US   →
     </Button>
   </motion.div>
 </Box>
@@ -97,16 +104,35 @@ const MainProduct = () => {
           transition={{ duration: 0.8 }}
           style={{ flex: 1 }}
         >
-          <Typography variant="h3" fontWeight="bold" gutterBottom sx={{pb:2}}>
+          <Typography variant="h2" fontWeight="400"  fontSize="58px"color="black" gutterBottom sx={{pb:2}}>
             Overview
           </Typography>
-          <Typography variant="body" color="text.secondary">
+          <Typography variant="h6" fontWeight="400" color="text.secondary">
             Managing inventory, billing, and reports separately is
             time-consuming and error-prone. Market Metrics brings it all
             together in one seamless platform. Designed for retailers,
             wholesalers, and SMEs, it simplifies daily operations while
             providing powerful insights for better decision-making.
           </Typography>
+          <Button
+      variant="contained"
+      sx={{
+        mt: 6,
+        px: 4,
+        py: 1.5,
+        borderRadius: "30px",
+        fontSize: "1rem",
+        fontWeight: 400,
+        background: "linear-gradient(90deg, #3f5eec, #00e4c9)", // your logo theme color
+        textTransform: "none",
+        "&:hover": {
+          background: "linear-gradient(90deg, #00e4c9, #3f5eec)",
+        },
+      }}
+      onClick={() => navigate("/services")}
+    >
+      Explore US   →
+    </Button>
         </motion.div>
 
         {/* Right Image */}
@@ -185,12 +211,12 @@ const MainProduct = () => {
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
   >
-    <Typography variant="h4" fontWeight="bold" color="white" textAlign="center" gutterBottom>
+    <Typography variant="h2"  fontWeight="400" fontSize="48px"   color="white" textAlign="center" gutterBottom>
       Key Features
     </Typography>
 
     <Typography
-      variant="body1"
+      variant="h6" fontWeight="400" fontSize={20}
       color="white"
       textAlign="center"
       maxWidth="700px"
@@ -245,10 +271,10 @@ const MainProduct = () => {
              
           }}
         >
-          <Typography variant="h6"  color="white" fontWeight="bold" gutterBottom>
+          <Typography variant="h6"  color="white" fontWeight="400"  fontSize="23px"gutterBottom>
             {feature.title}
           </Typography>
-          <Typography variant="body2" color="white">
+          <Typography variant="body" fontWeight="400" color="white">
             {feature.description}
           </Typography>
         </Box>
@@ -292,17 +318,17 @@ const MainProduct = () => {
   {/* Left side: heading & intro */}
   <Box sx={{ flex: 1, maxWidth: 400 }}>
     <Typography
-      variant="subtitle2"
-      sx={{ color: "#07bdfaff", fontWeight: 600, mb: 1 }}
+      variant="h6" fontWeight={600} fontSize={25}
+      sx={{ color: "#024d87",    mb: 1 }}
     >
       WHY MARKET METRICS?
     </Typography>
-    <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
-      Reliable, efficient, scalable: <br />
-      built for business automation.
+    <Typography variant="h6" fontWeight="600" color="black" sx={{ mb: 2 }}>
+      Reliable, Efficient, Scalable <br />
+      Built For Business Automation.
     </Typography>
-    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
-      With Market Metrics, businesses can streamline billing, track inventory live, and scale operations effortlessly. Our tools empower your team to make faster, smarter decisions.
+    <Typography variant="body" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+      With Market Metrics, Businesses Can Streamline Billing, Track Inventory Live, And Scale Operations Effortlessly. Our tools empower your team to make faster, smarter decisions.
     </Typography>
   </Box>
 
@@ -323,7 +349,7 @@ const MainProduct = () => {
     p: 3,
     borderRadius: 2,
     boxShadow: 1,
-    borderLeft: "4px solid #07bdfaff",
+    borderLeft: "4px solid #024d87",
     position: "relative",
     overflow: "hidden",
     transition: "all 0.3s ease",
@@ -341,7 +367,7 @@ const MainProduct = () => {
           height="32"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#07bdfaff"
+          stroke="#024d87"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -351,14 +377,14 @@ const MainProduct = () => {
           <path d="M9 12l2 2l4 -4" />
         </svg>
       </Box>
-      <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
-        Minimize errors
+      <Typography variant="h6" fontWeight="600" fontSize="20px"color="black" sx={{ mb: 1 }}>
+        Minimize Errors
       </Typography>
-      <Typography variant="caption" sx={{ color: "#07bdfaff", fontWeight: 500 }}>
-        Save time & reduce mistakes
+      <Typography variant="body" fontWeight="400" sx={{ color: "#024d87",  }}>
+        Save Time & Reduce Mistakes
       </Typography>
-      <Typography variant="body2" sx={{ mt: 1.2, color: "text.secondary" }}>
-        Automate repetitive tasks and reduce human errors with a smarter workflow engine.
+      <Typography variant="body2" fontFamily="Source Sans Pro" sx={{ mt: 1.2, color: "text.secondary" }}>
+        Automate Repetitive Tasks And Reduce Human Errors With A Marter Workflow Engine.
       </Typography>
     </Box>
 
@@ -369,7 +395,7 @@ const MainProduct = () => {
     p: 3,
     borderRadius: 2,
     boxShadow: 1,
-    borderLeft: "4px solid #07bdfaff",
+    borderLeft: "4px solid #024d87",
     position: "relative",
     overflow: "hidden",
     transition: "all 0.3s ease",
@@ -386,7 +412,7 @@ const MainProduct = () => {
           height="32"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#07bdfaff"
+          stroke="#024d87"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -396,14 +422,14 @@ const MainProduct = () => {
           <path d="M12 6v6l4 2" />
         </svg>
       </Box>
-      <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
-        Real‑time tracking
+     <Typography variant="h6" fontWeight="600" fontSize="20px"color="black" sx={{ mb: 1 }}>
+        Real‑Time Tracking
       </Typography>
-      <Typography variant="caption" sx={{ color: "#07bdfaff", fontWeight: 500 }}>
-        Stay updated, always
+     <Typography variant="body" fontWeight="400" sx={{ color: "#024d87",  }}>
+        Stay Updated, Always
       </Typography>
-      <Typography variant="body2" sx={{ mt: 1.2, color: "text.secondary" }}>
-        Monitor your sales and inventory status across multiple locations live.
+     <Typography variant="body2" fontFamily="Source Sans Pro" sx={{ mt: 1.2, color: "text.secondary" }}>
+        Monitor Your Sales And Inventory Status Across Multiple Locations Live.
       </Typography>
     </Box>
 
@@ -414,7 +440,7 @@ const MainProduct = () => {
     p: 3,
     borderRadius: 2,
     boxShadow: 1,
-    borderLeft: "4px solid #07bdfaff",
+    borderLeft: "4px solid #024d87",
     position: "relative",
     overflow: "hidden",
     transition: "all 0.3s ease",
@@ -431,7 +457,7 @@ const MainProduct = () => {
           height="32"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#07bdfaff"
+          stroke="#024d87"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -441,14 +467,14 @@ const MainProduct = () => {
           <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06 .06a2 2 0 1 1 -2.83 2.83l-.06 -.06a1.65 1.65 0 0 0 -1.82 -.33 1.65 1.65 0 0 0 -1 1.51V21a2 2 0 1 1 -4 0v-.09a1.65 1.65 0 0 0 -1 -1.51 1.65 1.65 0 0 0 -1.82 .33l-.06 .06a2 2 0 1 1 -2.83 -2.83l.06 -.06A1.65 1.65 0 0 0 5 15.4a1.65 1.65 0 0 0 -1.51 -1H3a2 2 0 1 1 0 -4h.09a1.65 1.65 0 0 0 1.51 -1 1.65 1.65 0 0 0 -.33 -1.82l-.06 -.06a2 2 0 1 1 2.83 -2.83l.06 .06A1.65 1.65 0 0 0 8.6 5a1.65 1.65 0 0 0 1 -1.51V3a2 2 0 1 1 4 0v.09c.36 .06 .69 .24 .93 .5l.06 .06a1.65 1.65 0 0 0 1.82 .33 1.65 1.65 0 0 0 1 1.51V5a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51z"/>
         </svg>
       </Box>
-      <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
-        Efficient automation
+      <Typography variant="h6" fontWeight="600" fontSize="20px"color="black" sx={{ mb: 1 }}>
+        Efficient Automation
       </Typography>
-      <Typography variant="caption" sx={{ color: "#07bdfaff", fontWeight: 500 }}>
-        Less manual work
+       <Typography variant="body" fontWeight="400" sx={{ color: "#024d87",  }}>
+        Less Manual Work
       </Typography>
-      <Typography variant="body2" sx={{ mt: 1.2, color: "text.secondary" }}>
-        Automate billing, reports, alerts and more to free up your team’s time.
+      <Typography variant="body2" fontFamily="Source Sans Pro" sx={{ mt: 1.2, color: "text.secondary" }}>
+        Automate Billing, Reports, Alerts And More To Free Up Your Team’s Time.
       </Typography>
     </Box>
 
@@ -459,7 +485,7 @@ const MainProduct = () => {
     p: 3,
     borderRadius: 2,
     boxShadow: 1,
-    borderLeft: "4px solid #07bdfaff",
+    borderLeft: "4px solid #024d87",
     position: "relative",
     overflow: "hidden",
     transition: "all 0.3s ease",
@@ -476,7 +502,7 @@ const MainProduct = () => {
           height="32"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#07bdfaff"
+          stroke="#024d87"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -486,14 +512,14 @@ const MainProduct = () => {
           <path d="M5 12l7 -7l7 7" />
         </svg>
       </Box>
-      <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
-        Scalable growth
+      <Typography variant="h6" fontWeight="600" fontSize="20px"color="black" sx={{ mb: 1 }}>
+        Scalable Growth
       </Typography>
-      <Typography variant="caption" sx={{ color: "#07bdfaff", fontWeight: 500 }}>
-        Grow without limits
+       <Typography variant="body" fontWeight="400" sx={{ color: "#024d87",  }}>
+        Grow Without Limits
       </Typography>
-      <Typography variant="body2" sx={{ mt: 1.2, color: "text.secondary" }}>
-        Whether you're expanding locations or services, our platform scales with your business.
+      <Typography variant="body2" fontFamily="Source Sans Pro" sx={{ mt: 1.2, color: "text.secondary" }}>
+        Whether You're Expanding Locations Or Services, Our Platform Scales With Your Business.
       </Typography>
     </Box>
   </Box>

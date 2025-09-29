@@ -33,7 +33,7 @@ const CoreValues = () => {
             <Typography variant="h6" fontWeight="bold" color="white">
               Innovation
             </Typography>
-            <Typography variant="body2"  color="white">
+            <Typography variant="body1"  color="white">
               We strive to innovate and push boundaries, ensuring our clients stay ahead in the digital landscape.
             </Typography>
             <Divider sx={{ mt: 2 }} />
@@ -43,7 +43,7 @@ const CoreValues = () => {
             <Typography variant="h6" fontWeight="bold" color="white">
               Excellence
             </Typography>
-            <Typography variant="body2" color="white">
+            <Typography variant="body1" color="white">
               Achieving excellence in every project is our standard, guaranteeing top-notch performance and results.
             </Typography>
             <Divider sx={{ mt: 2 }} />
@@ -53,7 +53,7 @@ const CoreValues = () => {
             <Typography variant="h6" fontWeight="bold" color="white"> 
               Client–Centric
             </Typography>
-            <Typography variant="body2"  color="white">
+            <Typography variant="body1"  color="white">
               Putting our clients first is our ethos, building strong relationships and delivering tailored solutions.
             </Typography>
           </Box>

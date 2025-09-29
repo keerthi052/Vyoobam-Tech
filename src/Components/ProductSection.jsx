@@ -7,6 +7,7 @@ import market2 from "../assets/market2.jpg";
 import event2 from "../assets/event2.jpg";
 import emart from "../assets/emart.jpg";
 import sales2 from "../assets/sales2.jpg";
+import { motion } from "framer-motion";
 
 const products = [
   { id: 1, name: "Market Metrics", image: market2, action: "READ MORE", path:"/product" },
@@ -15,26 +16,55 @@ const products = [
   { id: 4, name: "Sales Sage", image: sales2, action: "READ MORE" },
 ];
 
+
+const fadeIn = (delay = 0) => ({
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1.2, delay, ease: "easeOut" },
+  },
+});
 const ProductSection = () => {
+
+
+  
   return (
     
-    <Box sx={{ py: 8,px: 5, backgroundColor: "#02111cff " }}>
+    <Box 
+    
+    sx={{ py: 8,px: 5, background: "linear-gradient(180deg, #f3f4fd 0%, #042b45ff 150%)"
+ }}>
+  <motion.div
+  variants={fadeIn(0.2)}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+>
+      
       <Typography
-        variant="h4"
+        variant="h2"
         sx={{
-          fontWeight: "bold",
-          mb: 5,
-           mt:2,
-          
-          textAlign: "left",
-          background: "white",
+         
+          mb: 9,
+           mt:5,
+          fontWeight:"600",
+          fontSize: "40px",
+          textAlign: "center",
+          background: "black",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}
       >
-        Our Products
+       Our Products
       </Typography>
-
+</motion.div>
+<motion.div
+  variants={fadeIn(0.6)}   // small delay → comes after heading
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+>
       <Swiper
         modules={[Navigation]}
         spaceBetween={20}
@@ -99,22 +129,22 @@ const ProductSection = () => {
                   left: 0,
                   right: 0,
                   p: 3,
-                  color: "#fff",
+                  color: "#fcf9f9ff",
                   transform: "translateY(0%)", // always visible
                   opacity: 1,                  // always visible
                   backgroundColor: "rgba(0,0,0,0.4)", // semi-transparent overlay
                 }}
               >
                 <Typography
-                  variant="h6"
-                  sx={{ fontWeight: "bold", mb: 1 }}
+                  variant="h5" fontSize={28}
+                  sx={{  mb: 1 }}
                 >
                   {product.name}
                 </Typography>
                 <Button
                   variant="outlined"
                   sx={{
-                    color: "#fff",
+                    color: "#fffcfcff",
                     borderColor: "#fff",
                     textTransform: "uppercase",
                     fontSize: "0.8rem",
@@ -133,6 +163,38 @@ const ProductSection = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      </motion.div>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <motion.div
+  variants={fadeIn(1)}   // comes after cards
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+>
+       <Button
+      variant="contained"
+      sx={{
+        mt: 6,
+        px: 4,
+        py: 1.5,
+        borderRadius: "30px",
+        textAlign: "center",
+        justifyItems:"center",
+        fontSize: "1rem",
+        fontWeight: 400,
+        background: "linear-gradient(90deg, #3f5eec, #00e4c9)", // your logo theme color
+        textTransform: "none",
+        "&:hover": {
+          background: "linear-gradient(90deg, #00e4c9, #3f5eec)",
+        },
+      }}
+      onClick={() => navigate("/services")}
+    >
+      Explore US   →
+    </Button>
+    </motion.div>
+    </Box>
+    
     </Box>
   );
 };
