@@ -33,7 +33,7 @@ const ProductSection = () => {
     
     <Box 
     
-    sx={{ py: 8,px: 5, background: "linear-gradient(180deg, #f3f4fd 0%, #042b45ff 150%)"
+    sx={{ py: 8,px: 5, background: "#01061fff"
  }}>
   <motion.div
   variants={fadeIn(0.2)}
@@ -51,7 +51,7 @@ const ProductSection = () => {
           fontWeight:"600",
           fontSize: "40px",
           textAlign: "center",
-          background: "black",
+          background: "white",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}

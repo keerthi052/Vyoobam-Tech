@@ -23,7 +23,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useNavigate } from "react-router-dom";
 import logoImg from "../assets/logo.jpg";
-import marketproduct from "../assets/marketproduct.png";
+import marketproduct from "../assets/marketproduct1.png";
 import eventproduct from "../assets/eventproduct.png";
 import salesproduct from "../assets/salesproduct.png";
 import eproduct from "../assets/eproduct.png";

@@ -1,329 +1,337 @@
-// src/pages/ServicesPage.jsx
-import React, { useEffect, useRef } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  Paper,
-} from "@mui/material";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { Box, Typography, Card, CardContent,Button } from "@mui/material";
+import careers from "../assets/careers.jpg";
+import impactImg from "../assets/software.jpg"
+import Slider from "react-slick";
+import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 import { motion, useInView } from "framer-motion";
-import { Divider } from "@mui/material";
-import web from "../assets/web.png";
-import moblie from "../assets/moblie.jpg";
-import data from "../assets/data.jpg";
-
-const services = [
+import { useEffect, useRef, useState } from "react";
+import { AnimatedBox } from "./AnimatedBox";
+const expertiseList = [
   {
-    title: "Web Development – Building the Digital Face of Your Business",
-    description: `Your website is more than just an online presence—it is your brand identity. At Vyoobam Tech, we design and build future-ready websites that are scalable, secure, and engaging.`,
-    points: [
-      "Responsive & adaptive web applications",
-      "Enterprise-grade portals & e-commerce platforms",
-      "API integrations & secure payment systems",
-      "SEO-first architecture for higher visibility",
-    ],
-    impact:
-      "Empowers organizations to connect with customers globally, streamline online operations, and achieve measurable growth.",
-    image: web,
+    title: "Responsive & adaptive web applications",
+    desc: "Modern, mobile-first apps that scale across devices seamlessly.",
   },
   {
-    title: "Mobile App Development – Engaging Customers Anywhere, Anytime",
-    description: `In today’s mobile-first world, apps are the fastest way to engage customers. We create high-performance mobile applications that combine scalability, security, and intuitive design.`,
-    points: [
-      "Native iOS & Android apps",
-      "Cross-platform development (Flutter, React Native)",
-      "Real-time features: push notifications, geo-tracking, chatbots",
-      "Secure authentication & cloud integration",
-    ],
-    impact:
-      "Delivers apps that strengthen customer engagement, increase loyalty, and open new revenue streams.",
-    image: moblie,
+    title: "Enterprise-grade portals & e-commerce platforms",
+    desc: "Robust platforms built for security, scalability, and performance.",
   },
   {
-    title: "UI/UX Design – Experiences that Delight and Convert",
-    description: `Great design is not about pixels—it’s about human-centered experiences. Our design process ensures users interact with your brand in the most seamless and meaningful way.`,
-    points: [
-      "User research & behavioral analysis",
-      "Wireframes, prototypes, and usability testing",
-      "Minimalist, scalable, and accessible design systems",
-      "Consistent branding across platforms",
-    ],
-    impact:
-      "Improves customer satisfaction, product adoption, and business conversions.",
-    image: web,
+    title: "API integrations & secure payment systems",
+    desc: "Smooth integrations with 3rd party APIs and secure payment gateways.",
   },
   {
-    title: "Data Analytics – From Information to Intelligence",
-    description: `We transform raw data into actionable intelligence, enabling businesses to make faster and smarter decisions.`,
-    points: [
-      "Predictive & prescriptive analytics",
-      "Customer behavior insights",
-      "Automated reporting & real-time dashboards",
-      "AI/ML-driven data models",
-    ],
-    impact:
-      "Transforms decision-making from guesswork to data-backed precision.",
-    image: data,
-  },
-  {
-    title: "Data Visualization – Making Complex Data Simple",
-    description: `Information is powerful only when it is clear. Our data visualization services deliver interactive dashboards and real-time insights for leaders and teams.`,
-    points: [
-      "Rich visuals: charts, maps, and performance dashboards",
-      "Custom role-based views (C-suite, managers, analysts)",
-      "Integration with ERP, CRM, IoT & cloud systems",
-      "Self-service analytics tools",
-    ],
-    impact:
-      "Simplifies complex datasets, enabling faster decisions and improved business agility.",
-    image: web,
-  },
-  {
-    title: "Consulting Services – Driving Digital Transformation",
-    description: `We partner with organizations to design and implement future-ready digital strategies. Our consultants bring deep expertise in technology, industry trends, and process optimization.`,
-    points: [
-      "IT strategy & digital roadmaps",
-      "System modernization & cloud migration",
-      "Workflow automation & process redesign",
-      "Technology stack advisory",
-    ],
-    impact:
-      "Helps organizations optimize operations, reduce costs, and build resilience in an evolving digital economy.",
-    image: web,
+    title: "SEO-first architecture for higher visibility",
+    desc: "Optimized designs to ensure better ranking and discoverability.",
   },
 ];
-
-const impactStats = [
-  { value: "100+", label: "Projects Delivered Globally" },
-  { value: "250k+", label: "App Downloads" },
-  { value: "85%", label: "Client Satisfaction" },
-];
-
-const ServiceSection = ({ service, index }) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.35 });
-
-  const isEven = index % 2 === 0;
-
-  return (
-    <Box
-      ref={ref}
-      sx={{
-        position: "relative",
-        height: "100vh",
-        overflow: "hidden",
-        backgroundColor: "#0b0136ff",
-      }}
-    >
-      {/* Image */}
-      <motion.img
-        src={service.image}
-        alt={service.title}
-        style={{
-          position: "absolute",
-          top: 0,
-          objectFit: "cover",
-          width: "100%",
-          height: "100%",
-          borderRadius: 0,
-        }}
-        initial={{
-          width: "100%",
-          height: "100%",
-          top: 0,
-          left: 0,
-          borderRadius: 0,
-        }}
-        animate={
-          inView
-            ? isEven
-              ? {
-                  width: "48%",
-                  height: "70vh",
-                  top: "50%",
-                  left: "5%",
-                  translateY: "-50%",
-                  borderRadius: 16,
-                }
-              : {
-                  width: "45%",
-                  height: "65vh",
-                  top: "50%",
-                  right: "5%",
-                  left: "auto",
-                  translateY: "-50%",
-                  borderRadius: 16,
-                }
-            : {
-                width: "100%",
-                height: "100%",
-                top: 0,
-                left: 0,
-                translateY: 0,
-                borderRadius: 0,
-              }
-        }
-        transition={{ duration: 0.9, ease: "easeOut" }}
-      />
-
-      {/* Content */}
-      <motion.div
-        initial={{ opacity: 0, x: isEven ? 30 : -30 }}
-        animate={
-          inView ? { opacity: 1, x: 0 } : { opacity: 0, x: isEven ? 30 : -30 }
-        }
-        transition={{ duration: 0.6, delay: 0.15 }}
-        style={{
-          position: "absolute",
-          top: "20%",
-          transform: "translateY(-50%)",
-          maxWidth: 520,
-          width: "50%",
-          zIndex: 20,
-          ...(isEven ? { right: "5%" } : { left: "5%" }),
-        }}
-      >
-        <Typography variant="h4" sx={{ fontWeight: "700", mb: 1,mt:1,color:"whitesmoke"}}>
-          {service.title}
-        </Typography>
-        <Typography variant="body1" sx={{ color:"whitesmoke", mb: 2,pt:3 }}>
-          {service.description}
-        </Typography>
-        {service.points.map((point, i) => (
-          <Typography key={i} variant="body2" sx={{ mb:1,color:"whitesmoke", }}>
-            👉 {point}
-          </Typography>
-        ))}
-        <Typography variant="body2" sx={{ mt: 2,color:"whitesmoke",pt:3 }}>
-          <b>Business Impact:</b> {service.impact}
-        </Typography>
-      </motion.div>
-       <Divider
-        sx={{
-          width: "50%",          // half width
-          mx: "auto",            // center horizontally
-          mt: 4,                 // margin top (space from content)
-          borderColor: "#ccc",   // line color
-          borderBottomWidth: 2,  // line thickness
-        }}
-      />
-    </Box>
-  );
-};
-
-const Service = () => {
+export default function DiagonalHeroSection() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3, // desktop
+    slidesToScroll: 1,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 600, settings: { slidesToShow: 1 } },
+    ],
+  };
+   const navigate = useNavigate();
+    const ref = useRef(null);
+  const isInView = useInView(ref, { once: true }); // only animate once
+  const [animateNow, setAnimateNow] = useState(false);
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
+    setAnimateNow(true);
   }, []);
-
   return (
-    <Box>
-      {/* Hero */}
+    <>
+    <Box width="100%" minHeight="100vh">
+      {/* First White Section */}
       <Box
         sx={{
           position: "relative",
-          py: 12,
-          textAlign: "center",
-          background: "#9dbddb60",
-          color: "#fff",
+          bgcolor: "white",
+          clipPath: "polygon(0 ,0, 100% 0, 100% 80%, 0 100%)",  // bottom diagonal
+          zIndex: 2,
+          py: { xs: 6, md: 4 },
+          px: { xs: 2, md: 10 },
         }}
-        data-aos="fade-up"
       >
-        <Typography variant="h2" sx={{ fontWeight: "bold", mb: 2, color:"#02164bff" }}>
-          Transforming Ideas into Digital Excellence
-        </Typography>
-        <Typography variant="h6" sx={{ mb: 4 ,color:"#02164bff"}}>
-          Enterprise-grade web, mobile, and AI-powered solutions for tomorrow’s
-          business
-        </Typography>
-        <Button
-          variant="contained"
-          sx={{
-            bgcolor: "#ff6f61",
-            color: "#fff",
-            "&:hover": { bgcolor: "#ff3b2d" },
-          }}
-          data-aos="zoom-in"
-          data-aos-delay="200"
-        >
-          Explore Our Services
-        </Button>
-      </Box>
-
-      {/* Services */}
-      <Box>
-        {services.map((service, i) => (
-          <ServiceSection key={i} service={service} index={i} />
-        ))}
-      </Box>
-
-      {/* Impact */}
-      <Box
-        sx={{
-          py: 10,
-          backgroundColor: "#f9f9f9",
-          textAlign: "center",
-        }}
-        data-aos="fade-up"
+        <Typography variant="subtitle1">
+    <span
+      onClick={() => navigate("/")}
+      style={{ cursor: "pointer", fontWeight: "bold" }}
+    >
+      Home
+    </span>
+    &nbsp;&gt;&nbsp; <span style={{ fontWeight: "200" }}>Service</span>
+  </Typography>
+   <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView || animateNow ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 2, ease: "easeOut" }}
       >
-        <Typography variant="h4" sx={{ mb: 6 }}>
-          Driving Measurable Business Impact
-        </Typography>
-        <Box
+        <Typography
+          variant="h2"
+          fontWeight={700} mt={3} fontSize={90}
           sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 4,
-            justifyContent: "center",
+            background:
+              "black",
+            backgroundSize: "600% 600%",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            animation: isInView || animateNow ? "gradientFlow 6s ease infinite" : "none",
           }}
         >
-          {impactStats.map((stat, index) => (
-            <Box
-              key={index}
-              data-aos="flip-up"
-              data-aos-delay={index * 150}
-              sx={{
-                flex: { xs: "1 1 45%", sm: "1 1 30%", md: "1 1 20%" },
-              }}
-            >
-              <Paper sx={{ p: 4, borderRadius: 3, textAlign: "center" }}>
-                <Typography
-                  variant="h3"
-                  sx={{ color: "#ff6f61", fontWeight: "bold", mb: 1 }}
-                >
-                  {stat.value}
-                </Typography>
-                <Typography variant="body2">{stat.label}</Typography>
-              </Paper>
-            </Box>
-          ))}
-        </Box>
+        
+          Web Development 
+          <br />
+      
+        </Typography>
+         </motion.div>
+        <Typography variant="h6" mt={1} fontSize={30}>
+          Building the Digital Face of Your Business...
+        </Typography>
+        
       </Box>
+     
 
-      {/* CTA */}
+      {/* Second Section with Image */}
       <Box
         sx={{
-          py: 12,
-          textAlign: "center",
-          color: "#fff",
-           background: "#9dbddb60",
+          position: "relative",
+          height: "60vh",
+          backgroundImage: `url(${careers})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          clipPath: "polygon(0 90%, 100% 0, 100% 100%, 0% 100%)", // top diagonal
         }}
-        data-aos="zoom-in"
-      >
-        <Typography variant="h4" sx={{ mb: 3 , color:"#02164bff"}}>
-          Ready to Accelerate Your Digital Transformation?
-        </Typography>
-        <Button
-          variant="contained"
-          sx={{ bgcolor: "#ff6f61", "&:hover": { bgcolor: "#ff3b2d" } }}
+      />
+      <Box
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" }, // mobile → column, desktop → row
+        alignItems: "center",
+        justifyContent: "space-between",
+        px: { xs: 3, md: 8 },
+        py: { xs: 6, md: 10 },
+        gap: 4,
+      }}
+    >
+      {/* Left Side - Title */}
+      <Box sx={{ flex: 1 }}>
+        
+        <Typography
+          variant="h2"
+          fontWeight={800}
+          sx={{
+            fontSize: { xs: "2rem", md: "3rem" }, // mobile smaller, desktop bigger
+            lineHeight: 1.2,
+          }}
         >
-          Get in Touch
-        </Button>
+          Transform Your <br /> Digital Journey
+        </Typography>
+        
+      </Box>
+
+      {/* Right Side - Description */}
+      <Box sx={{ flex: 1 }}>
+        <Typography
+          variant="body1"
+          sx={{
+            fontSize: { xs: "1rem", md: "1.2rem" },
+            color: "text.secondary",
+            lineHeight: 1.6,
+          }}
+        >
+          We combine innovation, design thinking, and advanced technology
+          to deliver scalable solutions that help organizations thrive in
+          the digital era. From cloud-native applications to AI-driven
+          platforms, our expertise spans across industries and use-cases.
+        </Typography>
       </Box>
     </Box>
-  );
-};
+     <Box
+      sx={{
+        bgcolor: "white",
+        py: { xs: 6, md: 10 },
+        px: { xs: 3, md: 8 },
+        textAlign: "center",
+      }}
+    >
+      {/* Section Title */}
+      <AnimatedBox delay={0.2}>
+      <Typography
+        variant="h3"
+        fontWeight={800}
+        sx={{
+          fontSize: { xs: "2rem", md: "2.5rem" },
+          mb: 6,
+          position: "relative",
+          display: "inline-block",
+          "&::after": {
+            content: '""',
+            display: "block",
+            width: "60px",
+            height: "4px",
+            background: "linear-gradient(to right, #00e4c9, #a033ff, #ff267e)",
+            margin: "12px auto 0",
+            borderRadius: "2px",
+          },
+        }}
+      >
+        Our Expertise
+      </Typography>
+      </AnimatedBox>
 
-export default Service;
+      {/* Cards Layout */}
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: 4,
+        }}
+      >
+        {expertiseList.map((item, index) => (
+          <Box
+            key={index}
+            sx={{
+              flex: { xs: "1 1 100%", sm: "1 1 45%", md: "1 1 22%" },
+              display: "flex",
+            }}
+          >
+            <Card
+              sx={{
+                flex: 1,
+                borderRadius: "16px",
+                boxShadow: "0 6px 16px rgba(0,0,0,0.08)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                "&:hover": {
+                  transform: "translateY(-8px)",
+                  boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+                },
+              }}
+            >
+              <CardContent sx={{ p: 4 }}>
+                <Typography
+                  variant="h6"
+                  fontWeight={700}
+                  sx={{
+                    fontSize: "1.1rem",
+                    mb: 1,
+                  }}
+                >
+                  {item.title}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "text.secondary",
+                    fontSize: "0.9rem",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {item.desc}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+    
+    </Box>
+    <Box
+      sx={{
+        bgcolor: "#f9f9f9",
+        py: { xs: 6, md: 10 },
+        px: { xs: 3, md: 8 },
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        alignItems: "center",
+        gap: 6,
+      }}
+    >
+      {/* Left Side - Content */}
+      <Box flex={1}>
+        <AnimatedBox delay={0.2}>
+        <Typography
+          variant="h3"
+          fontWeight={800}
+          sx={{
+            fontSize: { xs: "2rem", md: "2.5rem" },
+            mb: 3,
+            position: "relative",
+            display: "inline-block",
+            "&::after": {
+              content: '""',
+              display: "block",
+              width: "60px",
+              height: "4px",
+              background: "linear-gradient(to right, #00e4c9, #a033ff, #ff267e)", // Tech Mahindra Red
+              margin: "12px 0 0",
+              borderRadius: "2px",
+            },
+          }}
+        >
+          Business Impact
+        </Typography>
+</AnimatedBox>
+        <Typography
+          variant="body1"
+          sx={{
+            color: "text.secondary",
+            fontSize: "1.05rem",
+            lineHeight: 1.7,
+            mb: 3,
+          }}
+        >
+          Empowers organizations to connect with customers globally,
+          streamline online operations, and achieve measurable growth.
+        </Typography>
+
+        {/* Optional CTA */}
+         <Button
+      variant="contained"
+      sx={{
+        mt: 6,
+        px: 4,
+        py: 1.5,
+        borderRadius: "30px",
+        fontSize: "1rem",
+        fontWeight: 400,
+        background: "linear-gradient(90deg, #3f5eec, #00e4c9)", // your logo theme color
+        textTransform: "none",
+        "&:hover": {
+          background: "linear-gradient(90deg, #00e4c9, #3f5eec)",
+        },
+      }}
+      onClick={() => navigate("/services")}
+    >
+      View   →
+    </Button>
+       
+      </Box>
+
+      {/* Right Side - Image */}
+      <Box
+        flex={1}
+        component="img"
+        src={impactImg}
+        alt="Business Impact"
+        sx={{
+          width: "30%",
+          borderRadius: "16px",
+          boxShadow: "0 6px 18px rgba(0,0,0,0.1)",
+          objectFit: "cover",
+        }}
+      />
+    </Box>
+    <Footer/>
+    </>
+    
+  );
+}

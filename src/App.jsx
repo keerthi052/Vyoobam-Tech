@@ -16,6 +16,7 @@ import MainProduct from "./Components/MainProduct";
 import Event from "./Components/Event"
 import Sales from "./Components/Sales"
 import AllProduct from "./Components/AllProduct.jsx";
+import JobOpenings from "./Components/JobOpenings.jsx";
 
 
 
@@ -54,6 +55,7 @@ function App() {
             <Route path="/Event" element={<Event />} />
             <Route path="/Sales" element={<Sales />} />
             <Route path="/Allproduct" element={<AllProduct/>} />
+             <Route path="/openings" element={<JobOpenings/>} />
           </Routes>
         </Router>
       </div>
