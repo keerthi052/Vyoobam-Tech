@@ -7,10 +7,11 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { motion, AnimatePresence } from "framer-motion";
 import logoImg from "../assets/logo.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
-  const [open, setOpen] = useState(false);
-
+ 
+const navigate = useNavigate();
   const linkStyle = {
     display: "block",
     color: "white",
@@ -26,38 +27,23 @@ const Footer = () => {
     <Box
       sx={{
         position: "relative",
-        bgcolor: "#f9fafc",
-        color: "#010000ff",
+        bgcolor: "#010c23ff",
+        color: "#ffffffff",
         textAlign: "center",
-        py: 2,
+        py:7,
       }}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
     >
       {/* Logo */}
+
       
 
       {/* Copyright */}
-      <Typography variant="body2">© 2025 Vyoobam Tech. All Rights Reserved.</Typography>
+      
 
       {/* Expanded Content on Hover */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 100 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            style={{
-              position: "absolute",
-              bottom: "100%",
-              left: 0,
-              width: "100%",
-              background: "#021530ff",
-              padding: "3rem 1rem",
-              zIndex: 1300,
-            }}
-          >
+      
+        
+          
             {/* Columns Section */}
             <Box
               sx={{
@@ -81,59 +67,87 @@ const Footer = () => {
                 <Typography variant="h6" gutterBottom color="white">
                   Company
                 </Typography>
-                <Link component={RouterLink} to="/overview" sx={linkStyle}>Overview</Link>
-                <Link component={RouterLink} to="/vision" sx={linkStyle}>Vision/Mission</Link>
-                <Link component={RouterLink} to="/timeline" sx={linkStyle}>Timeline</Link>
-                <Link component={RouterLink} to="/core-values" sx={linkStyle}>Core Values</Link>
+                <Link component={RouterLink} to="/about" sx={linkStyle}>Overview</Link>
+                <Link component={RouterLink} to="/about"sx={linkStyle}>Vision/Mission</Link>
+                <Link component={RouterLink} to="/about" sx={linkStyle}>Timeline</Link>
+                <Link component={RouterLink} to="/about" sx={linkStyle}>Core Values</Link>
               </Box>
 
               <Box sx={{ minWidth: 120, borderRight: "1px solid white", px: 2 }}>
                 <Typography variant="h6" gutterBottom color="white">
                   PRODUCTS
                 </Typography>
-                <Link component={RouterLink} to="/market-metrics" sx={linkStyle}>Market Metrics</Link>
-                <Link component={RouterLink} to="/events" sx={linkStyle}>Events</Link>
-                <Link component={RouterLink} to="/sales-sage" sx={linkStyle}>Sales Sage</Link>
-                <Link component={RouterLink} to="/e-grocery" sx={linkStyle}>E-Grocery</Link>
+                <Link component={RouterLink} to="/Market" sx={linkStyle}>Market Metrics</Link>
+                <Link component={RouterLink} to="/Event" sx={linkStyle}>Events</Link>
+                <Link component={RouterLink} to="/Sales" sx={linkStyle}>Sales Sage</Link>
+                <Link component={RouterLink} to="/Egrocery" sx={linkStyle}>E-Grocery</Link>
+       <Link component={RouterLink} to="/Vyoobam" sx={linkStyle}>Vyoobam Nudge</Link>
               </Box>
 
               <Box sx={{ minWidth: 120, pl: 2 }}>
                 <Typography variant="h6" gutterBottom color="white">
                   SERVICES
                 </Typography>
-                <Link component={RouterLink} to="/web-development" sx={linkStyle}>Web Development</Link>
-                <Link component={RouterLink} to="/mobile-development" sx={linkStyle}>Mobile Development</Link>
-                <Link component={RouterLink} to="/data-analysis" sx={linkStyle}>Data Analysis</Link>
-                <Link component={RouterLink} to="/ui-ux-design" sx={linkStyle}>UI/UX Design</Link>
-                <Link component={RouterLink} to="/consulting" sx={linkStyle}>Consulting</Link>
+                <Link component={RouterLink} to="/service/web-development" sx={linkStyle}>Web Development</Link>
+                <Link component={RouterLink} to="/services/Mobile-development" sx={linkStyle}>Mobile Development</Link>
+                <Link component={RouterLink} to="/services/Data-development" sx={linkStyle}>Data Analysis</Link>
+                <Link component={RouterLink} to="/services/Ui-development" sx={linkStyle}>UI/UX Design</Link>
+                <Link component={RouterLink} to="/services/it-consulting" sx={linkStyle}>Consulting</Link>
               </Box>
             </Box>
 
             {/* Connect Section */}
             <Box sx={{ mb: 3 }}>
-              <Button variant="contained" color="error">
+              <Button variant="contained" color="error" onClick={() => navigate("/Contact")}>
                 CONNECT WITH US
               </Button>
             </Box>
-
+<Typography variant="body2">© 2025 Vyoobam Tech. All Rights Reserved.</Typography>
             {/* Social Icons */}
-            <Box>
-              <IconButton color="primary">
-                <FacebookIcon />
-              </IconButton>
-              <IconButton color="info">
-                <TwitterIcon />
-              </IconButton>
-              <IconButton color="secondary">
-                <InstagramIcon />
-              </IconButton>
-              <IconButton color="primary">
-                <LinkedInIcon />
-              </IconButton>
-            </Box>
-          </motion.div>
-        )}
-      </AnimatePresence>
+           <Box>
+  <IconButton
+    color="primary"
+    component="a"
+    href="https://www.facebook.com/VyoobamTech"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FacebookIcon />
+  </IconButton>
+
+  <IconButton
+    color="info"
+    component="a"
+    href="https://twitter.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <TwitterIcon />
+  </IconButton>
+
+  <IconButton
+    color="secondary"
+    component="a"
+    href="https://www.instagram.com/vyoobamtech/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <InstagramIcon />
+  </IconButton>
+
+  <IconButton
+    color="primary"
+    component="a"
+    href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <LinkedInIcon />
+  </IconButton>
+</Box>
+
+          
+       
     </Box>
   );
 };

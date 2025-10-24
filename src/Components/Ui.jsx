@@ -1,5 +1,5 @@
 import { Box, Typography, Card, CardContent,Button } from "@mui/material";
-import careers from "../assets/careers.jpg";
+import careers from "../assets/uiservice.jpg";
 import impactImg from "../assets/software.jpg"
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { AnimatedBox } from "./AnimatedBox";
+import Header from "./Header";
 const expertiseList = [
  {
     title: "User research & behavioral analysis",
@@ -25,90 +26,84 @@ const expertiseList = [
     desc: "Uniform visual identity and messaging across all touchpoints for stronger brand recognition.",
   },
 ];
-export default function DiagonalHeroSection() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3, // desktop
-    slidesToScroll: 1,
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 600, settings: { slidesToShow: 1 } },
-    ],
-  };
+export default function UiUxDesign() {
    const navigate = useNavigate();
-    const ref = useRef(null);
-  const isInView = useInView(ref, { once: true }); // only animate once
   const [animateNow, setAnimateNow] = useState(false);
-  useEffect(() => {
-    setAnimateNow(true);
-  }, []);
+
+  // 🔥 Refs for each animated section
+  const refHero = useRef(null);
+  const refTransform = useRef(null);
+  const refImpact = useRef(null);
+
+  // 🔥 InView triggers
+  const isHeroInView = useInView(refHero, { once: true });
+  const isTransformInView = useInView(refTransform, { once: true });
+  const isImpactInView = useInView(refImpact, { once: true });
+
+  useEffect(() => setAnimateNow(true), []);
+
   return (
     <>
-    <Box width="100%" minHeight="100vh">
-      {/* First White Section */}
-      <Box
-        sx={{
-          position: "relative",
-          bgcolor: "white",
-          clipPath: "polygon(0 ,0, 100% 0, 100% 80%, 0 100%)",  // bottom diagonal
-          zIndex: 2,
-          py: { xs: 6, md: 4 },
-          px: { xs: 2, md: 10 },
-        }}
-      >
-        <Typography variant="subtitle1">
-    <span
-      onClick={() => navigate("/")}
-      style={{ cursor: "pointer", fontWeight: "bold" }}
-    >
-      Home
-    </span>
-    &nbsp;&gt;&nbsp; <span style={{ fontWeight: "200" }}>Service</span>
-  </Typography>
-   <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView || animateNow ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 2, ease: "easeOut" }}
-      >
-        <Typography
-          variant="h2"
-          fontWeight={700} mt={3} fontSize={90}
+     <Header />
+      <Box width="100%" minHeight="100vh">
+        {/* 🔥 HERO SECTION */}
+        <Box
           sx={{
-            background:
-              "black",
-            backgroundSize: "600% 600%",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            animation: isInView || animateNow ? "gradientFlow 6s ease infinite" : "none",
+            position: "relative",
+            bgcolor: "white",
+            clipPath: "polygon(0 ,0, 100% 0, 100% 80%, 0 100%)",
+            zIndex: 2,
+            py: { xs: 6, md: 14 },
+            px: { xs: 2, md: 10 },
           }}
         >
-        
-          UI/UX Design 
-          <br />
-      
-        </Typography>
-         </motion.div>
-        <Typography variant="h6" mt={1} fontSize={30}>
-          Experiences that Delight and Convert....
-        </Typography>
-        
-      </Box>
-     
+          {/* <Typography variant="subtitle1">
+            <span
+              onClick={() => navigate("/")}
+              style={{ cursor: "pointer", fontWeight: "bold" }}
+            >
+              s
+           </span>
+          </Typography> */}
 
-      {/* Second Section with Image */}
-      <Box
-        sx={{
-          position: "relative",
-          height: "60vh",
-          backgroundImage: `url(${careers})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          clipPath: "polygon(0 90%, 100% 0, 100% 100%, 0% 100%)", // top diagonal
-        }}
-      />
+          <motion.div
+            ref={refHero}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isHeroInView || animateNow ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 2, ease: "easeOut" }}
+          >
+            <Typography
+              variant="h2"
+              fontWeight={700}
+              mt={3}
+              fontSize={90}
+              sx={{
+                background: "black",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              UI/UX Design
+              <br />
+            </Typography>
+          </motion.div>
+
+          <Typography variant="h6" mt={1} fontSize={30}>
+            Experience that delight and convert...
+          </Typography>
+        </Box>
+
+        {/* BACKGROUND IMAGE */}
+        <Box
+          sx={{
+            position: "relative",
+            height: { xs: "60vh", md: "90vh" },
+            backgroundImage: `url(${careers})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            clipPath: "polygon(0 50%, 100% 0, 100% 100%, 0% 100%)",
+          }}
+        />
       <Box
       sx={{
         display: "flex",
@@ -307,7 +302,7 @@ export default function DiagonalHeroSection() {
           background: "linear-gradient(90deg, #00e4c9, #3f5eec)",
         },
       }}
-      onClick={() => navigate("/services")}
+      onClick={() => navigate("/Contact")}
     >
       View   →
     </Button>

@@ -1,14 +1,13 @@
 import { Box, Typography, Paper, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import meeting from "../assets/metting.jpg";
-import best from "../assets/best2.jpg";
+
 import InsightsIcon from "@mui/icons-material/Insights";
 import LockIcon from "@mui/icons-material/Lock";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { motion, AnimatePresence } from "framer-motion";
-import "../Styles/FlipGallery.css"
-
+import "../Styles/FlipGallery.css";
 
 const features = [
   {
@@ -38,8 +37,8 @@ const features = [
 ];
 
 const Choose = () => {
-   const theme = useTheme();
-  const images = [meeting, best];
+  const theme = useTheme();
+  const images = meeting;
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1); // 1 for next, -1 for previous
 
@@ -50,7 +49,7 @@ const Choose = () => {
     }, 3500);
     return () => clearInterval(interval);
   }, []);
-    const variants = {
+  const variants = {
     enter: (direction) => ({
       x: direction > 0 ? "100%" : "-100%",
       opacity: 0,
@@ -70,7 +69,6 @@ const Choose = () => {
     }),
   };
 
-
   return (
     <Box
       sx={{
@@ -89,21 +87,24 @@ const Choose = () => {
           alignItems: "center",
         }}
       >
-          {/* Left: Animated Image Transition */}
+        {/* Left: Animated Image Transition */}
         <Box>
-          <Typography variant="h2"  gutterBottom>
+          <Typography variant="h2" gutterBottom>
             Why Choose Us?
           </Typography>
-          <Typography variant="body1"fontSize={16} fontWeight={500} sx={{ mb: 4 ,color:"white"}}>
+          <Typography
+            variant="body1"
+            fontSize={16}
+            fontWeight={500}
+            sx={{ mb: 4, color: "white" }}
+          >
             Choosing the right technology partner is crucial for the success of
             your business. Here’s why Vyoobam Tech stands out.
           </Typography>
 
           {/* Animated Image Wrapper */}
           <img src={meeting} alt="meeting" className="single-effect" />
-          <Box >
-      
-    </Box>
+          <Box></Box>
         </Box>
         {/* Right Section - Features */}
         <Box sx={{ display: "grid", gap: 3 }}>
@@ -160,7 +161,14 @@ const Choose = () => {
                   <Typography variant="h6" fontWeight={500} fontSize={18}>
                     {feature.title}
                   </Typography>
-                  <Typography variant="body" fontWeight={300} fontSize={14} sx={{color:"white"}}>{feature.description}</Typography>
+                  <Typography
+                    variant="body"
+                    fontWeight={300}
+                    fontSize={14}
+                    sx={{ color: "white" }}
+                  >
+                    {feature.description}
+                  </Typography>
                 </Box>
               </Paper>
             </motion.div>

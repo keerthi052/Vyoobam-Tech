@@ -6,15 +6,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import hari from "../assets/hari.png";
-import hari2 from "../assets/hari2.webp";
+import hari2 from "../assets/hari2.png";
 import kt from "../assets/kt.jpg";
 import lakshu from "../assets/lakshu.png";
 import cheliyan from "../assets/cheliyan.png";
-
+import seva from "../assets/seva.jpg"
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { AnimatedBox } from "./AnimatedBox";
 
-const brandLogos = [hari, lakshu, cheliyan, hari2, kt];
+const brandLogos = [hari, lakshu, cheliyan, hari2, kt,seva];
 
 const testimonials = [
   {
@@ -39,7 +40,7 @@ const TestimonialSlider = () => {
         backgroundColor: "#fffffff8",
         textAlign: "center",
         overflow: "hidden",
-         // important to hide overflow scroll
+        // important to hide overflow scroll
       }}
     >
       {/* ✅ Logo Scrolling Container */}
@@ -84,10 +85,11 @@ const TestimonialSlider = () => {
       </style>
 
       {/* Testimonial Section */}
-      <Typography variant="h2" color="black" gutterBottom mt={5} mb={5}>
-        Our Clients Say
-      </Typography>
-
+      <AnimatedBox>
+        <Typography variant="h2" color="black" gutterBottom mt={5} mb={5}>
+          Our Clients Say
+        </Typography>
+      </AnimatedBox>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         navigation={{
